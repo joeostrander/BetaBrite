@@ -1,0 +1,11 @@
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\bin\Debug\BetaBrite.exe.config
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\bin\Debug\BetaBrite.exe
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\bin\Debug\BetaBrite.pdb
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\bin\Debug\BetaBrite.xml
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Debug\BetaBrite.Form1.resources
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Debug\BetaBrite.Resources.resources
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Debug\BetaBrite.vbproj.GenerateResource.Cache
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Debug\BetaBrite.exe
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Debug\BetaBrite.xml
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Debug\BetaBrite.pdb
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Debug\BetaBrite.AboutBox1.resources

@@ -1,0 +1,24 @@
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\bin\Release\BetaBrite.exe.config
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\bin\Release\BetaBrite.exe
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\bin\Release\BetaBrite.pdb
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\bin\Release\BetaBrite.xml
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Release\BetaBrite.Form1.resources
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Release\BetaBrite.Resources.resources
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Release\BetaBrite.vbproj.GenerateResource.Cache
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Release\BetaBrite.exe
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Release\BetaBrite.xml
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Release\BetaBrite.pdb
+c:\users\administrator\documents\visual studio 2013\Projects\BetaBrite\BetaBrite\obj\Release\BetaBrite.AboutBox1.resources
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\BetaBrite\BetaBrite\obj\Release\BetaBrite.vbprojResolveAssemblyReference.cache
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\bin\Release\BetaBrite.exe.config
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Release\BetaBrite.exe
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Release\BetaBrite.xml
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Release\BetaBrite.pdb
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\bin\Release\BetaBrite.exe
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\bin\Release\BetaBrite.pdb
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\bin\Release\BetaBrite.xml
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Release\BetaBrite.vbprojResolveAssemblyReference.cache
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Release\BetaBrite.AboutBox1.resources
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Release\BetaBrite.Form1.resources
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Release\BetaBrite.Resources.resources
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Release\BetaBrite.vbproj.GenerateResource.Cache
