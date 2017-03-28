@@ -581,6 +581,8 @@ Public Class Form1
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If Not IsNumeric(TextBoxUpdateSeconds.Text) Then Exit Sub
 
+        If ComboBoxLEDPort.Text = "" Then Exit Sub
+
         Dim intInterval As Double = CDbl(TextBoxUpdateSeconds.Text)
         If Not intInterval > 0 Then Exit Sub
 
