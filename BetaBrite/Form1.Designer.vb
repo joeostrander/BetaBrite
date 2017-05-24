@@ -35,6 +35,7 @@ Partial Class Form1
         Me.DateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TimeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SystemTimeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SystemDateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.URLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComboBoxColor = New System.Windows.Forms.ComboBox()
         Me.LabelColor = New System.Windows.Forms.Label()
@@ -78,13 +79,15 @@ Partial Class Form1
         Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ButtonSaveSettings = New System.Windows.Forms.Button()
-        Me.SystemDateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ContextMenuStripMessage.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBoxText.SuspendLayout()
         Me.GroupBoxImage.SuspendLayout()
         Me.ContextMenuStripTRAY.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'LabelLEDPort
@@ -127,7 +130,7 @@ Partial Class Form1
         Me.ContextMenuStripMessage.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ColorsToolStripMenuItem, Me.ExtendedCharsToolStripMenuItem, Me.FontsToolStripMenuItem, Me.DateToolStripMenuItem, Me.TimeToolStripMenuItem, Me.SystemTimeToolStripMenuItem, Me.SystemDateToolStripMenuItem, Me.URLToolStripMenuItem})
         Me.ContextMenuStripMessage.Name = "ContextMenuStripMessage"
         Me.ContextMenuStripMessage.ShowImageMargin = False
-        Me.ContextMenuStripMessage.Size = New System.Drawing.Size(131, 202)
+        Me.ContextMenuStripMessage.Size = New System.Drawing.Size(131, 180)
         '
         'ColorsToolStripMenuItem
         '
@@ -164,6 +167,12 @@ Partial Class Form1
         Me.SystemTimeToolStripMenuItem.Name = "SystemTimeToolStripMenuItem"
         Me.SystemTimeToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.SystemTimeToolStripMenuItem.Text = "&System Time"
+        '
+        'SystemDateToolStripMenuItem
+        '
+        Me.SystemDateToolStripMenuItem.Name = "SystemDateToolStripMenuItem"
+        Me.SystemDateToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.SystemDateToolStripMenuItem.Text = "S&ystem Date"
         '
         'URLToolStripMenuItem
         '
@@ -549,11 +558,20 @@ Partial Class Form1
         Me.ButtonSaveSettings.Text = "Sa&ve Settings"
         Me.ButtonSaveSettings.UseVisualStyleBackColor = True
         '
-        'SystemDateToolStripMenuItem
+        'StatusStrip1
         '
-        Me.SystemDateToolStripMenuItem.Name = "SystemDateToolStripMenuItem"
-        Me.SystemDateToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
-        Me.SystemDateToolStripMenuItem.Text = "S&ystem Date"
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 423)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(559, 22)
+        Me.StatusStrip1.TabIndex = 9
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(120, 17)
+        Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
         '
         'Form1
         '
@@ -561,8 +579,9 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.ButtonClear
-        Me.ClientSize = New System.Drawing.Size(559, 432)
+        Me.ClientSize = New System.Drawing.Size(559, 445)
         Me.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ButtonSaveSettings)
         Me.Controls.Add(Me.GroupBoxImage)
         Me.Controls.Add(Me.GroupBoxText)
@@ -575,7 +594,7 @@ Partial Class Form1
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(575, 470)
+        Me.MinimumSize = New System.Drawing.Size(575, 484)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
@@ -586,6 +605,8 @@ Partial Class Form1
         Me.GroupBoxText.PerformLayout()
         Me.GroupBoxImage.ResumeLayout(False)
         Me.ContextMenuStripTRAY.ResumeLayout(False)
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -645,5 +666,6 @@ Partial Class Form1
     Friend WithEvents ButtonSaveSettings As System.Windows.Forms.Button
     Friend WithEvents AboutToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SystemDateToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
 End Class

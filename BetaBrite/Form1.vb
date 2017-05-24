@@ -75,7 +75,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        ToolStripStatusLabel1.Text = ""
         ClearImage()
 
         Me.Text = Application.ProductName
@@ -157,7 +157,7 @@ Public Class Form1
     End Sub
 
     Private Sub SendMessage2(ByVal strTextToSend As String)
-
+        ToolStripStatusLabel1.Text = ""
         Dim strPortName_LED As String = ComboBoxLEDPort.SelectedValue.ToString
         Dim trans As Transition = Transition.Hold
 
@@ -203,7 +203,8 @@ Public Class Form1
             Try
                 .Display(strTextToSend, trans)
             Catch ex As Exception
-                MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+                'MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+                ToolStripStatusLabel1.Text = ex.Message
             End Try
 
             .Close()
