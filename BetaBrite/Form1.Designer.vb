@@ -81,6 +81,11 @@ Partial Class Form1
         Me.ButtonSaveSettings = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.CheckBoxRunAtStartup = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxMilitaryTime = New System.Windows.Forms.CheckBox()
+        Me.CheckBoxSynchClock = New System.Windows.Forms.CheckBox()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ContextMenuStripMessage.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,6 +93,7 @@ Partial Class Form1
         Me.GroupBoxImage.SuspendLayout()
         Me.ContextMenuStripTRAY.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'LabelLEDPort
@@ -201,7 +207,7 @@ Partial Class Form1
         '
         'ButtonSend
         '
-        Me.ButtonSend.Location = New System.Drawing.Point(18, 371)
+        Me.ButtonSend.Location = New System.Drawing.Point(18, 418)
         Me.ButtonSend.Name = "ButtonSend"
         Me.ButtonSend.Size = New System.Drawing.Size(100, 35)
         Me.ButtonSend.TabIndex = 5
@@ -211,7 +217,7 @@ Partial Class Form1
         'ButtonClear
         '
         Me.ButtonClear.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.ButtonClear.Location = New System.Drawing.Point(232, 371)
+        Me.ButtonClear.Location = New System.Drawing.Point(232, 418)
         Me.ButtonClear.Name = "ButtonClear"
         Me.ButtonClear.Size = New System.Drawing.Size(100, 35)
         Me.ButtonClear.TabIndex = 7
@@ -281,7 +287,7 @@ Partial Class Form1
         'ButtonSetClock
         '
         Me.ButtonSetClock.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.ButtonSetClock.Location = New System.Drawing.Point(338, 371)
+        Me.ButtonSetClock.Location = New System.Drawing.Point(338, 418)
         Me.ButtonSetClock.Name = "ButtonSetClock"
         Me.ButtonSetClock.Size = New System.Drawing.Size(99, 35)
         Me.ButtonSetClock.TabIndex = 0
@@ -309,7 +315,7 @@ Partial Class Form1
         '
         'ButtonSendImage
         '
-        Me.ButtonSendImage.Location = New System.Drawing.Point(124, 371)
+        Me.ButtonSendImage.Location = New System.Drawing.Point(124, 418)
         Me.ButtonSendImage.Name = "ButtonSendImage"
         Me.ButtonSendImage.Size = New System.Drawing.Size(100, 35)
         Me.ButtonSendImage.TabIndex = 6
@@ -504,7 +510,7 @@ Partial Class Form1
         Me.GroupBoxImage.Controls.Add(Me.PanelYellow)
         Me.GroupBoxImage.Location = New System.Drawing.Point(6, 203)
         Me.GroupBoxImage.Name = "GroupBoxImage"
-        Me.GroupBoxImage.Size = New System.Drawing.Size(497, 143)
+        Me.GroupBoxImage.Size = New System.Drawing.Size(531, 143)
         Me.GroupBoxImage.TabIndex = 4
         Me.GroupBoxImage.TabStop = False
         Me.GroupBoxImage.Text = "Image"
@@ -551,7 +557,7 @@ Partial Class Form1
         'ButtonSaveSettings
         '
         Me.ButtonSaveSettings.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.ButtonSaveSettings.Location = New System.Drawing.Point(443, 371)
+        Me.ButtonSaveSettings.Location = New System.Drawing.Point(443, 418)
         Me.ButtonSaveSettings.Name = "ButtonSaveSettings"
         Me.ButtonSaveSettings.Size = New System.Drawing.Size(99, 35)
         Me.ButtonSaveSettings.TabIndex = 8
@@ -561,7 +567,7 @@ Partial Class Form1
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 423)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 463)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(559, 22)
         Me.StatusStrip1.TabIndex = 9
@@ -573,14 +579,58 @@ Partial Class Form1
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(120, 17)
         Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.CheckBoxRunAtStartup)
+        Me.GroupBox1.Controls.Add(Me.CheckBoxMilitaryTime)
+        Me.GroupBox1.Controls.Add(Me.CheckBoxSynchClock)
+        Me.GroupBox1.Location = New System.Drawing.Point(6, 352)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(531, 46)
+        Me.GroupBox1.TabIndex = 10
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Settin&gs"
+        '
+        'CheckBoxRunAtStartup
+        '
+        Me.CheckBoxRunAtStartup.AutoSize = True
+        Me.CheckBoxRunAtStartup.Location = New System.Drawing.Point(293, 19)
+        Me.CheckBoxRunAtStartup.Name = "CheckBoxRunAtStartup"
+        Me.CheckBoxRunAtStartup.Size = New System.Drawing.Size(93, 17)
+        Me.CheckBoxRunAtStartup.TabIndex = 2
+        Me.CheckBoxRunAtStartup.Text = "Run at startup"
+        Me.CheckBoxRunAtStartup.UseVisualStyleBackColor = True
+        '
+        'CheckBoxMilitaryTime
+        '
+        Me.CheckBoxMilitaryTime.AutoSize = True
+        Me.CheckBoxMilitaryTime.Location = New System.Drawing.Point(155, 19)
+        Me.CheckBoxMilitaryTime.Name = "CheckBoxMilitaryTime"
+        Me.CheckBoxMilitaryTime.Size = New System.Drawing.Size(106, 17)
+        Me.CheckBoxMilitaryTime.TabIndex = 1
+        Me.CheckBoxMilitaryTime.Text = "Use Military Time"
+        Me.CheckBoxMilitaryTime.UseVisualStyleBackColor = True
+        '
+        'CheckBoxSynchClock
+        '
+        Me.CheckBoxSynchClock.AutoSize = True
+        Me.CheckBoxSynchClock.Location = New System.Drawing.Point(17, 19)
+        Me.CheckBoxSynchClock.Name = "CheckBoxSynchClock"
+        Me.CheckBoxSynchClock.Size = New System.Drawing.Size(114, 17)
+        Me.CheckBoxSynchClock.TabIndex = 0
+        Me.CheckBoxSynchClock.Text = "Synchronize Clock"
+        Me.ToolTip1.SetToolTip(Me.CheckBoxSynchClock, "Synchronize the clock with PC clock")
+        Me.CheckBoxSynchClock.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AcceptButton = Me.ButtonSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.ButtonClear
-        Me.ClientSize = New System.Drawing.Size(559, 445)
+        Me.ClientSize = New System.Drawing.Size(559, 485)
         Me.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ButtonSaveSettings)
         Me.Controls.Add(Me.GroupBoxImage)
@@ -596,6 +646,7 @@ Partial Class Form1
         Me.MaximizeBox = False
         Me.MinimumSize = New System.Drawing.Size(575, 484)
         Me.Name = "Form1"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         Me.ContextMenuStripMessage.ResumeLayout(False)
@@ -607,6 +658,8 @@ Partial Class Form1
         Me.ContextMenuStripTRAY.ResumeLayout(False)
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -668,4 +721,9 @@ Partial Class Form1
     Friend WithEvents SystemDateToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents CheckBoxRunAtStartup As CheckBox
+    Friend WithEvents CheckBoxMilitaryTime As CheckBox
+    Friend WithEvents CheckBoxSynchClock As CheckBox
+    Friend WithEvents ToolTip1 As ToolTip
 End Class

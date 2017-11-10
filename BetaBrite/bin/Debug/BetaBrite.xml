@@ -6,441 +6,551 @@ BetaBrite
 </name>
 </assembly>
 <members>
+<member name="T:BetaBrite.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:BetaBrite.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:BetaBrite.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:BetaBrite.Protocol">
+ <summary>
+ returns Alpha Sign Communications Protocol commands to control the BetaBrite LED sign
+ adapted from Alpha Sign Communications Protocol document at http://www.ams-i.com/Pages/97088061.htm
+ </summary>
+<remarks>
+  Jeff Atwood
+  http://www.codinghorror.com/
+ </remarks>
+</member>
+<member name="P:BetaBrite.Protocol.Address">
+ <summary>
+ The identifier or “address” of the sign represented by two ASCII digits as a number between “00” and “FF” (0 to 255). 
+ Address "00" is reserved as a broadcast address. The wildcard character “?” (3FH) can be used to send messages to a 
+ range of addresses. For example, a Sign Address of “0?” will access signs with address between 01H and 0FH (1 and 15).
+ Defaults to "00"
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.File">
+ <summary>
+ character betweeh 20h (32) and 7fH (127)
+ </summary>
+ <remarks>
+  File Label 0 (30H) is used for a Priority TEXT file
+  File Label 0 (30H) and ? (3FH) cannot be used as STRING file labels.
+ </remarks>
+</member>
+<member name="T:BetaBrite.Protocol.BaseCommand">
+ <summary>
+ Base class for an Alpha Communications Protocol command
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Rotate">
+ <summary>
+ Message travels right to left
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Hold">
+ <summary>
+ Message remains stationary
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Flash">
+ <summary>
+ Message remains stationary and flashes
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.RollUp">
+ <summary>
+ Previous message is pushed up by a new message
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.RollDown">
+ <summary>
+ Previous message is pushed down by a new message
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.RollLeft">
+ <summary>
+ Previous message is pushed left by a new message
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.RollRight">
+ <summary>
+ Previous message is pushed right by a new message
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.WipeUp">
+ <summary>
+ New message is wiped over the previous message from bottom to top
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.WipeDown">
+ <summary>
+ New message is wiped over the previous message from top to bottom
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.WipeLeft">
+ <summary>
+ New message is wiped over the previous message from right to left
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.WipeRight">
+ <summary>
+ New message is wiped over the previous message from left to right
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Scroll">
+ <summary>
+ New message line pushes the bottom line to the top line if 2-line sign
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Auto">
+ <summary>
+ Various Modes are called upon to display the message automatically
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.RollIn">
+ <summary>
+ Previous message is pushed toward the center of the display by the new message
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.RollOut">
+ <summary>
+ Previous message is pushed outward from the center by the new message
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.WipeIn">
+ <summary>
+ New message is wiped over the previous message in an inward motion
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.WipeOut">
+ <summary>
+ New message is wiped over the previous message in an outward motion
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.CompressedRotate">
+ <summary>
+ Message travels right to left. Characters are approximately one half their normal width
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Twinkle">
+ <summary>
+ Special transition defined in the Special enumeration
+ </summary>
+ <remarks>
+    Special = H6E          ' n
+ End Enum
+ if it's less thatn h61... then just prefix n...
+ Public Enum Special As Byte
+ </remarks>
+ 
+     '<summary>
+     no special mode selected; used as a default only
+     '</summary>
+    None = &amp;H0          ' NUL
+ '<summary>
+ Message will twinkle on the sign (all LEDs will flash rapidly)
+ '</summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Sparkle">
+ <summary>
+ New message will sparkle over the current message
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Snow">
+ <summary>
+ Message will drift on to the display like falling snow
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Interlock">
+ <summary>
+ New message will interlock over the current message in alternating rows of dots from each end
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Switch">
+ <summary>
+ Alternating characters “switch” off the sign up and down. New message “switches” on in a similar manner
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Spray">
+ <summary>
+ New message sprays across and onto the sign from right to left
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Starburst">
+ <summary>
+ small explosions blast the new message onto the sign
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Welcome">
+ <summary>
+ welcome is written in script across the sign and changes multiple colors
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.SlotMachine">
+ <summary>
+ Slot machine symbols appear randomly across the sign
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.NewsFlash">
+ <summary>
+ Satellite dish broadcasts the words News Flash on the sign
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Trumpet">
+ <summary>
+ Animated trumpet blows multicolored notes across the sign
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.CycleColors">
+ <summary>
+ color changes from one color to another
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.ThankYou">
+ <summary>
+ Thank You is written in script across the sign and changes multiple colors
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.NoSmoking">
+ <summary>
+ A cigarette image appears, is then extinguished and replaced with a no smoking symbol
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.DontDrink">
+ <summary>
+ A car runs into a cocktail glass and is replaced with the text “Please don’t drink and drive”
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Fish">
+ <summary>
+ fish swim across the sign, then are chased back across it by a shark
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Fireworks">
+ <summary>
+ Large fireworks explode randomly across the sign
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.Balloon">
+ <summary>
+ Party baloons scroll up the display
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Transition.CherryBomb">
+ <summary>
+ A bomb fuse burns down followed by a giant explosion
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.FileType.Text">
+ <summary>
+ File represents displayable text
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.FileType.String">
+ <summary>
+ File represents a string variable
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.FileType.Picture">
+ <summary>
+ File represents a bitmap image
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Protection.Unlocked">
+ <summary>
+ Can be changed via the infrared remote
+ </summary>
+</member>
+<member name="F:BetaBrite.Protocol.Protection.Locked">
+ <summary>
+ Cannot be changed via the infrared remote
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.TextFile">
+ <summary>
+ TextFile used in SetTextCommand and SetTextCommands
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.WriteTextFileCommand">
+ <summary>
+ Write a single text command to a File
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.WriteTextFileCommands">
+ <summary>
+ Writes multiple TEXT commands to a File
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.WritePictureFileCommand">
+ <summary>
+ Converts an image file from disk into a BetaBrite picture file
+ dimensions can be maximum of 255 width x 31 height, and up to 8 colors
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.MemoryItem">
+ <summary>
+ MemoryItem used in SetMemoryCommand and SetMemoryCommands
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.SetMemoryCommand">
+ <summary>
+ Stores a single item in the sign's memory
+ (via constructor only)
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.SetMemoryCommands">
+ <summary>
+ Stores multiple items in the sign's memory
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.SetRunSequenceCommand">
+ <summary>
+ Sets the run (display) sequence for a series of 1-128 text files. If a file label is invalid or 
+ does not exist, the next one in the sequence will run.
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.SetRunTimeCommand">
+ <summary>
+ Set the times to start and stop displaying a particular Text file
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.SetRunDayCommand">
+ <summary>
+ Set the days to start and stop displaying a particular Text file
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.ClearMemoryCommand">
+ <summary>
+ Clears all sign memory
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.ResetCommand">
+ <summary>
+ Performs a soft (non-destructive) reset of the sign; memory is retained
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.SetTimeFormatCommand">
+ <summary>
+ Set format of time displayed on the sign, either
+ standard or 24-hour (military)
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.SetDateTimeCommand">
+ <summary>
+ Set the date, time, and day of week on the display
+ Joe added timeformat...
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.SetTimeCommand">
+ <summary>
+ Sets the time on the display
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.SetDayCommand">
+ <summary>
+ Sets the day of week on the display
+ </summary>
+</member>
+<member name="T:BetaBrite.Protocol.SetDateCommand">
+ <summary>
+ Sets the date on the display
+ </summary>
+</member>
+<member name="M:BetaBrite.Protocol.ExpandedMessageLength(System.String)">
+ <summary>
+ Returns the number of bytes in a fully expanded message that contains
+ control code tags and/or international characters
+ </summary>
+</member>
+<member name="M:BetaBrite.Protocol.ExpandMessage(System.String)">
+ <summary>
+ Expands message control code tags and/or international characters, if present
+ </summary>
+</member>
+<member name="M:BetaBrite.Protocol.ExpandControlCodes(System.String)">
+ <summary>
+ returns a list of vaguely HTML-style commands and parameters, eg
+ &lt;font=fiveslim&gt;Hello &lt;color=red&gt;World
+ </summary>
+</member>
+<member name="M:BetaBrite.Protocol.ExpandInternationalChars(System.String)">
+ <summary>
+ high ascii chars must be expressed as double-byte chars in a specific BetaBrite format
+ </summary>
+</member>
+<member name="M:BetaBrite.Protocol.BytesToString(System.Byte[])">
+ <summary>
+ pretty-printer for showing ASCII bytestreams in the console
+ </summary>
+</member>
+<member name="M:BetaBrite.Protocol.TimeToByteAscii(System.DateTime)">
+ <summary>
+ converts a time to hex code between 00-8F (10 minute intervals)
+ 00 equals 12:00-12:10am, 01 equals 12:10-12:20am, etc.
+ </summary>
+ <remarks>
+ Stop Time is ignored when Start Time is set to Always (FF)
+ </remarks>
+</member>
+<member name="T:BetaBrite.Sign">
+ <summary>
+ Allows programmatic control of most BetaBrite sign features
+ </summary>
+ <remarks>
+   Jeff Atwood
+   http://www.codinghorror.com/
+ Modified to use .NET Serial library --Joe Ostrander
+ </remarks>
+</member>
 <member name="M:BetaBrite.Sign.#ctor(System.String)">
-	<summary>
+ <summary>
  Sets the address and communication port of the BetaBrite sign you wish to control
  communication will not be opened until the first command is sent
  </summary>
-</member><member name="P:BetaBrite.Sign.DebugMode">
-	<summary>
+</member>
+<member name="P:BetaBrite.Sign.DebugMode">
+ <summary>
  In debug mode, all commands are 'pretty printed' to Debug.Trace 
  when they are sent to the sign
  </summary>
-</member><member name="P:BetaBrite.Sign.IsOpen">
-	<summary>
+</member>
+<member name="P:BetaBrite.Sign.IsOpen">
+ <summary>
  Returns true if the sign is Open and ready to accept commands.
  note that the sign will be opened automatically when the 
  first command is sent
  </summary>
-</member><member name="M:BetaBrite.Sign.UseMemoryText(System.Char,System.Int32)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.UseMemoryText(System.Char,System.Int32)">
+ <summary>
  Queue a request to use memory for a text element in this file label
  Call AllocateMemory to perform your queued allocations
  </summary>
-</member><member name="M:BetaBrite.Sign.UseMemoryString(System.Char,System.Int32)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.UseMemoryString(System.Char,System.Int32)">
+ <summary>
  Queue a request to use memory for a string element in this file label
  Call AllocateMemory to perform your queued allocations
  </summary>
-</member><member name="M:BetaBrite.Sign.UseMemoryPicture(System.Char)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.UseMemoryPicture(System.Char)">
+ <summary>
  Queue a request to use memory for a picture of a default (80x7) size in this file label
  Call AllocateMemory to perform your queued allocations
  </summary>
-</member><member name="M:BetaBrite.Sign.UseMemoryPicture(System.Char,System.Int32,System.Int32)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.UseMemoryPicture(System.Char,System.Int32,System.Int32)">
+ <summary>
  Queue a request to use memory for a picture of a specific size in this file label
  Call AllocateMemory to perform your queued allocations
  </summary>
-</member><member name="M:BetaBrite.Sign.AllocateMemory">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.AllocateMemory">
+ <summary>
  Allocates all queued memory requests in the sign's memory. This is always destructive!
  </summary>
-</member><member name="M:BetaBrite.Sign.CalculateMessageLength(System.String)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.CalculateMessageLength(System.String)">
+ <summary>
  Calculates the exact amount of memory storage required for
  a fully expanded message with control codes and/or international characters
  </summary>
-</member><member name="M:BetaBrite.Sign.SetDateAndTime(BetaBrite.Protocol.TimeFormat)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.SetDateAndTime(BetaBrite.Protocol.TimeFormat)">
+ <summary>
  Sets the date and time on the sign to the current system date/time
  </summary>
-</member><member name="M:BetaBrite.Sign.SetDateAndTime(System.DateTime,BetaBrite.Protocol.TimeFormat)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.SetDateAndTime(System.DateTime,BetaBrite.Protocol.TimeFormat)">
+ <summary>
  Sets the date and time on the sign to any arbitrary date/time
  </summary>
-</member><member name="M:BetaBrite.Sign.SetRunSequence(System.String)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.SetRunSequence(System.String)">
+ <summary>
  Sets a run sequence 1 to 128 file labels (note: text files only)
  eg, "DEBC" would display text files D, E, B, and C.
  </summary>
-</member><member name="M:BetaBrite.Sign.Display(System.String,BetaBrite.Protocol.Transition)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.Display(System.String,BetaBrite.Protocol.Transition)">
+ <summary>
  Displays a single message on the sign and holds it there.
  This basic command not require allocating memory, but can only display one message in file label "A".
  HTML-style formatting codes can be used to specify various display options. 
  Joe added transitions...and Special
  </summary>
 Public Sub Display(ByVal message As String, ByVal trans As Transition, Optional ByVal blah As Special = Special.None)
-
-</member><member name="M:BetaBrite.Sign.SetText(System.Char,System.String,BetaBrite.Protocol.Transition)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.SetText(System.Char,System.String,BetaBrite.Protocol.Transition)">
+ <summary>
  Sets a single text message in the specified file label.
  Once set, a particular file label can be displayed by setting the RunOrder sequence.
  HTML-style markup can be used to specify various display and visual options within the message.
  </summary>
 Public Sub SetText(ByVal fileLabel As Char, ByVal message As String, Optional ByVal t As Transition = Transition.Auto, Optional ByVal sm As Special = Special.None)
-
-</member><member name="M:BetaBrite.Sign.SetTextMultiple(System.Char)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.SetTextMultiple(System.Char)">
+ <summary>
  Sets multiple text messages in the specified file label.
  </summary>
-</member><member name="M:BetaBrite.Sign.SetString(System.Char,System.String)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.SetString(System.Char,System.String)">
+ <summary>
  Sets a string message in the sign's memory.
  Once set, strings can be displayed via the &lt;CallString=(filelabel)&gt; message markup command
  strings can be overwritten in memory without making the sign 'flash', but only support
  a subset of the full message markup commands.
  </summary>
-</member><member name="M:BetaBrite.Sign.SetPicture(System.Char,System.String)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.SetPicture(System.Char,System.String)">
+ <summary>
  Loads a 80x7 8-color graphic file from disk, using any valid format, into the sign's memory.
  Once loaded, pictures can be displayed via the &lt;CallPic=(filelabel)&gt; message markup command
  </summary>
-</member><member name="M:BetaBrite.Sign.SetPicture(System.Char,System.Drawing.Bitmap)">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.SetPicture(System.Char,System.Drawing.Bitmap)">
+ <summary>
  Loads a 80x7 8-color graphic bitmap object into the sign's memory.
  Once loaded, pictures can be displayed via the &lt;CallPic=(filelabel)&gt; message markup command
  </summary>
-</member><member name="M:BetaBrite.Sign.Close">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.Close">
+ <summary>
  closes the communication channel between the PC and the sign.
  This is NOT done automatically, so it should be called when
  you're done with the sign.
  </summary>
-</member><member name="M:BetaBrite.Sign.Open">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.Open">
+ <summary>
  opens the communication channel between the PC and the sign
  this can be done explicitly, or it will automatically happen
  when the first commands is sent to the sign
  </summary>
-</member><member name="M:BetaBrite.Sign.ClearMemory">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.ClearMemory">
+ <summary>
  Clear the sign's memory completely; this also causes it to go into the 
  default attract sequence (which is also a pretty good demo of everything
  you can do programmatically using this class!)
  </summary>
-</member><member name="M:BetaBrite.Sign.Reset">
-	<summary>
+</member>
+<member name="M:BetaBrite.Sign.Reset">
+ <summary>
  Performs a non-destructive reset of the sign. Memory contents ARE retained.
  </summary>
-</member><member name="T:BetaBrite.Sign">
-	<summary>
- Allows programmatic control of most BetaBrite sign features
- </summary>
-	<remarks>
-   Jeff Atwood
-   http://www.codinghorror.com/
- Modified to use .NET Serial library --Joe Ostrander
- </remarks>
-</member><member name="P:BetaBrite.My.Resources.Resources.ResourceManager">
-	<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member><member name="P:BetaBrite.My.Resources.Resources.Culture">
-	<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member><member name="T:BetaBrite.My.Resources.Resources">
-	<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
-</member><member name="P:BetaBrite.Protocol.Address">
-	<summary>
- The identifier or “address” of the sign represented by two ASCII digits as a number between “00” and “FF” (0 to 255). 
- Address "00" is reserved as a broadcast address. The wildcard character “?” (3FH) can be used to send messages to a 
- range of addresses. For example, a Sign Address of “0?” will access signs with address between 01H and 0FH (1 and 15).
- Defaults to "00"
- </summary>
-</member><member name="T:BetaBrite.Protocol.File">
-	<summary>
- character betweeh 20h (32) and 7fH (127)
- </summary>
-	<remarks>
-  File Label 0 (30H) is used for a Priority TEXT file
-  File Label 0 (30H) and ? (3FH) cannot be used as STRING file labels.
- </remarks>
-</member><member name="T:BetaBrite.Protocol.BaseCommand">
-	<summary>
- Base class for an Alpha Communications Protocol command
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Rotate">
-	<summary>
- Message travels right to left
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Hold">
-	<summary>
- Message remains stationary
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Flash">
-	<summary>
- Message remains stationary and flashes
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.RollUp">
-	<summary>
- Previous message is pushed up by a new message
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.RollDown">
-	<summary>
- Previous message is pushed down by a new message
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.RollLeft">
-	<summary>
- Previous message is pushed left by a new message
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.RollRight">
-	<summary>
- Previous message is pushed right by a new message
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.WipeUp">
-	<summary>
- New message is wiped over the previous message from bottom to top
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.WipeDown">
-	<summary>
- New message is wiped over the previous message from top to bottom
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.WipeLeft">
-	<summary>
- New message is wiped over the previous message from right to left
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.WipeRight">
-	<summary>
- New message is wiped over the previous message from left to right
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Scroll">
-	<summary>
- New message line pushes the bottom line to the top line if 2-line sign
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Auto">
-	<summary>
- Various Modes are called upon to display the message automatically
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.RollIn">
-	<summary>
- Previous message is pushed toward the center of the display by the new message
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.RollOut">
-	<summary>
- Previous message is pushed outward from the center by the new message
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.WipeIn">
-	<summary>
- New message is wiped over the previous message in an inward motion
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.WipeOut">
-	<summary>
- New message is wiped over the previous message in an outward motion
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.CompressedRotate">
-	<summary>
- Message travels right to left. Characters are approximately one half their normal width
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Sparkle">
-	<summary>
- New message will sparkle over the current message
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Snow">
-	<summary>
- Message will drift on to the display like falling snow
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Interlock">
-	<summary>
- New message will interlock over the current message in alternating rows of dots from each end
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Switch">
-	<summary>
- Alternating characters “switch” off the sign up and down. New message “switches” on in a similar manner
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Spray">
-	<summary>
- New message sprays across and onto the sign from right to left
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Starburst">
-	<summary>
- small explosions blast the new message onto the sign
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Welcome">
-	<summary>
- welcome is written in script across the sign and changes multiple colors
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.SlotMachine">
-	<summary>
- Slot machine symbols appear randomly across the sign
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.NewsFlash">
-	<summary>
- Satellite dish broadcasts the words News Flash on the sign
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Trumpet">
-	<summary>
- Animated trumpet blows multicolored notes across the sign
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.CycleColors">
-	<summary>
- color changes from one color to another
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.ThankYou">
-	<summary>
- Thank You is written in script across the sign and changes multiple colors
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.NoSmoking">
-	<summary>
- A cigarette image appears, is then extinguished and replaced with a no smoking symbol
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.DontDrink">
-	<summary>
- A car runs into a cocktail glass and is replaced with the text “Please don’t drink and drive”
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Fish">
-	<summary>
- fish swim across the sign, then are chased back across it by a shark
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Fireworks">
-	<summary>
- Large fireworks explode randomly across the sign
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.Balloon">
-	<summary>
- Party baloons scroll up the display
- </summary>
-</member><member name="F:BetaBrite.Protocol.Transition.CherryBomb">
-	<summary>
- A bomb fuse burns down followed by a giant explosion
- </summary>
-</member><member name="F:BetaBrite.Protocol.FileType.Text">
-	<summary>
- File represents displayable text
- </summary>
-</member><member name="F:BetaBrite.Protocol.FileType.String">
-	<summary>
- File represents a string variable
- </summary>
-</member><member name="F:BetaBrite.Protocol.FileType.Picture">
-	<summary>
- File represents a bitmap image
- </summary>
-</member><member name="F:BetaBrite.Protocol.Protection.Unlocked">
-	<summary>
- Can be changed via the infrared remote
- </summary>
-</member><member name="F:BetaBrite.Protocol.Protection.Locked">
-	<summary>
- Cannot be changed via the infrared remote
- </summary>
-</member><member name="T:BetaBrite.Protocol.TextFile">
-	<summary>
- TextFile used in SetTextCommand and SetTextCommands
- </summary>
-</member><member name="T:BetaBrite.Protocol.WriteTextFileCommand">
-	<summary>
- Write a single text command to a File
- </summary>
-</member><member name="T:BetaBrite.Protocol.WriteTextFileCommands">
-	<summary>
- Writes multiple TEXT commands to a File
- </summary>
-</member><member name="T:BetaBrite.Protocol.WritePictureFileCommand">
-	<summary>
- Converts an image file from disk into a BetaBrite picture file
- dimensions can be maximum of 255 width x 31 height, and up to 8 colors
- </summary>
-</member><member name="T:BetaBrite.Protocol.MemoryItem">
-	<summary>
- MemoryItem used in SetMemoryCommand and SetMemoryCommands
- </summary>
-</member><member name="T:BetaBrite.Protocol.SetMemoryCommand">
-	<summary>
- Stores a single item in the sign's memory
- (via constructor only)
- </summary>
-</member><member name="T:BetaBrite.Protocol.SetMemoryCommands">
-	<summary>
- Stores multiple items in the sign's memory
- </summary>
-</member><member name="T:BetaBrite.Protocol.SetRunSequenceCommand">
-	<summary>
- Sets the run (display) sequence for a series of 1-128 text files. If a file label is invalid or 
- does not exist, the next one in the sequence will run.
- </summary>
-</member><member name="T:BetaBrite.Protocol.SetRunTimeCommand">
-	<summary>
- Set the times to start and stop displaying a particular Text file
- </summary>
-</member><member name="T:BetaBrite.Protocol.SetRunDayCommand">
-	<summary>
- Set the days to start and stop displaying a particular Text file
- </summary>
-</member><member name="T:BetaBrite.Protocol.ClearMemoryCommand">
-	<summary>
- Clears all sign memory
- </summary>
-</member><member name="T:BetaBrite.Protocol.ResetCommand">
-	<summary>
- Performs a soft (non-destructive) reset of the sign; memory is retained
- </summary>
-</member><member name="T:BetaBrite.Protocol.SetTimeFormatCommand">
-	<summary>
- Set format of time displayed on the sign, either
- standard or 24-hour (military)
- </summary>
-</member><member name="T:BetaBrite.Protocol.SetDateTimeCommand">
-	<summary>
- Set the date, time, and day of week on the display
- Joe added timeformat...
- </summary>
-</member><member name="T:BetaBrite.Protocol.SetTimeCommand">
-	<summary>
- Sets the time on the display
- </summary>
-</member><member name="T:BetaBrite.Protocol.SetDayCommand">
-	<summary>
- Sets the day of week on the display
- </summary>
-</member><member name="T:BetaBrite.Protocol.SetDateCommand">
-	<summary>
- Sets the date on the display
- </summary>
-</member><member name="M:BetaBrite.Protocol.ExpandedMessageLength(System.String)">
-	<summary>
- Returns the number of bytes in a fully expanded message that contains
- control code tags and/or international characters
- </summary>
-</member><member name="M:BetaBrite.Protocol.ExpandMessage(System.String)">
-	<summary>
- Expands message control code tags and/or international characters, if present
- </summary>
-</member><member name="M:BetaBrite.Protocol.ExpandControlCodes(System.String)">
-	<summary>
- returns a list of vaguely HTML-style commands and parameters, eg
- &lt;font=fiveslim&gt;Hello &lt;color=red&gt;World
- </summary>
-</member><member name="M:BetaBrite.Protocol.ExpandInternationalChars(System.String)">
-	<summary>
- high ascii chars must be expressed as double-byte chars in a specific BetaBrite format
- </summary>
-</member><member name="M:BetaBrite.Protocol.BytesToString(System.Byte[])">
-	<summary>
- pretty-printer for showing ASCII bytestreams in the console
- </summary>
-</member><member name="M:BetaBrite.Protocol.TimeToByteAscii(System.DateTime)">
-	<summary>
- converts a time to hex code between 00-8F (10 minute intervals)
- 00 equals 12:00-12:10am, 01 equals 12:10-12:20am, etc.
- </summary>
-	<remarks>
- Stop Time is ignored when Start Time is set to Always (FF)
- </remarks>
-</member><member name="T:BetaBrite.Protocol">
-	<summary>
- returns Alpha Sign Communications Protocol commands to control the BetaBrite LED sign
- adapted from Alpha Sign Communications Protocol document at http://www.ams-i.com/Pages/97088061.htm
- </summary>
-	<remarks>
-  Jeff Atwood
-  http://www.codinghorror.com/
- </remarks>
 </member>
 </members>
 </doc>

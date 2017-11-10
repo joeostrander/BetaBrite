@@ -20,6 +20,8 @@ Public Class Form1
     Private strSetting_Speed As String = ""
     Private strSetting_UpdateSeconds As String = "0"
     Private boolStartup As Boolean = False
+    Private boolSynchronizeClock As Boolean = True
+    Private boolUseMilitaryTime As Boolean = True
 
 
     Private boolTrayExit As Boolean = False
@@ -38,6 +40,7 @@ Public Class Form1
     Private listModes As List(Of KeyValuePair(Of String, Byte)) = New List(Of KeyValuePair(Of String, Byte))
 
     Private LastUpdate As Date
+    Private LastClockSynchronize As Date
 
 
     Private Sub LoadPortsList()
@@ -153,6 +156,7 @@ Public Class Form1
         LoadRegistrySettings()
 
         LastUpdate = DateAdd(DateInterval.Day, -1, Now)
+        LastClockSynchronize = DateAdd(DateInterval.Day, -1, Now)
 
     End Sub
 
@@ -235,32 +239,44 @@ Public Class Form1
 
     Private Sub ButtonSetClock_Click(sender As Object, e As EventArgs) Handles ButtonSetClock.Click
 
+        UpdateClock()
+    End Sub
+
+    Private Sub UpdateClock()
+
         Dim strPortName_LED As String = ComboBoxLEDPort.SelectedValue.ToString
 
         If strPortName_LED = "" Then
-            MsgBox("No LED port selected!", MsgBoxStyle.Exclamation)
+            ToolStripStatusLabel1.Text = "No LED port selected!"
             Exit Sub
         End If
 
         Dim dt As DateTime
 
         Dim tf As TimeFormat = TimeFormat.Standard
-        Select Case MsgBox("Format Military time?", MsgBoxStyle.Question + MsgBoxStyle.YesNoCancel)
-            Case MsgBoxResult.Yes
-                tf = TimeFormat.Military
-            Case MsgBoxResult.Cancel
+        If boolUseMilitaryTime Then tf = TimeFormat.Military
+
+        'Select Case MsgBox("Format Military time?", MsgBoxStyle.Question + MsgBoxStyle.YesNoCancel)
+        '    Case MsgBoxResult.Yes
+        '        tf = TimeFormat.Military
+        '    Case MsgBoxResult.Cancel
+        '        Exit Sub
+        'End Select
+
+        If boolSynchronizeClock Then
+            dt = Now
+        Else
+            Dim strDate As String = InputBox("Enter the time:", "Set Date/Time", Now)
+            If strDate = "" Then Exit Sub
+
+            If Not IsDate(strDate) Then
+                MsgBox("Invalid date.", MsgBoxStyle.Exclamation)
                 Exit Sub
-        End Select
+            End If
 
-        Dim strDate As String = InputBox("Enter the time:", "Set Date/Time", Now)
-        If strDate = "" Then Exit Sub
-
-        If Not IsDate(strDate) Then
-            MsgBox("Invalid date.", MsgBoxStyle.Exclamation)
-            Exit Sub
+            dt = DateTime.Parse(strDate)
         End If
 
-        dt = DateTime.Parse(strDate)
 
         Dim bb As New BetaBrite.Sign(strPortName_LED)
 
@@ -454,6 +470,10 @@ Public Class Form1
             'Get Current Value and set it in the interface
             boolStartup = appRegKey.GetValue("RunAtStartup", False)
 
+            'boolUseMilitaryTime,boolSynchronizeClock
+            boolUseMilitaryTime = appRegKey.GetValue("UseMilitaryTime", True)
+            boolSynchronizeClock = appRegKey.GetValue("SynchronizeClock", True)
+
             strSetting_Color = appRegKey.GetValue("Color", "")
             strSetting_LEDPort = appRegKey.GetValue("LEDPort", "")
             strSetting_Message = appRegKey.GetValue("Message", "")
@@ -465,6 +485,10 @@ Public Class Form1
 
             'RunAtStartupToolStripMenuItem.Checked = boolStartup
             RunAtStartupToolStripMenuItemTRAY.Checked = boolStartup
+            CheckBoxRunAtStartup.Checked = boolStartup
+
+            CheckBoxMilitaryTime.Checked = boolUseMilitaryTime
+            CheckBoxSynchClock.Checked = boolSynchronizeClock
 
         End If
 
@@ -566,6 +590,9 @@ Public Class Form1
         appRegKey.SetValue("Speed", strSetting_Speed)
         appRegKey.SetValue("UpdateSeconds", strSetting_UpdateSeconds)
 
+        appRegKey.SetValue("SynchronizeClock", boolSynchronizeClock, RegistryValueKind.DWord)
+        appRegKey.SetValue("UseMilitaryTime", boolUseMilitaryTime, RegistryValueKind.DWord)
+
 
         regKey.Close()
         appRegKey.Close()
@@ -580,6 +607,16 @@ Public Class Form1
     'End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        'Clock synchronize
+        If boolSynchronizeClock Then
+            If DateDiff(DateInterval.Minute, LastClockSynchronize, Now) >= 60 Then
+                UpdateClock()
+                LastClockSynchronize = Now
+            End If
+        End If
+
+
+        'Sign text update
         If Not IsNumeric(TextBoxUpdateSeconds.Text) Then Exit Sub
 
         If ComboBoxLEDPort.Text = "" Then Exit Sub
@@ -672,9 +709,15 @@ Public Class Form1
 
     Private Sub RunAtStartupToolStripMenuItemTRAY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RunAtStartupToolStripMenuItemTRAY.Click
         boolStartup = RunAtStartupToolStripMenuItemTRAY.Checked
+        CheckBoxRunAtStartup.Checked = boolStartup
         SaveRegistrySettings()
     End Sub
 
+    Private Sub CheckBoxRunAtStartup_Click(sender As Object, e As EventArgs) Handles CheckBoxRunAtStartup.Click
+        boolStartup = CheckBoxRunAtStartup.Checked
+        RunAtStartupToolStripMenuItemTRAY.Checked = boolStartup
+        SaveRegistrySettings()
+    End Sub
 
     Private Sub NotifyIcon1_BalloonTipClicked(ByVal sender As Object, ByVal e As System.EventArgs) Handles NotifyIcon1.BalloonTipClicked
         ShowMe()
@@ -692,5 +735,11 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub CheckBoxSynchClock_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxSynchClock.CheckedChanged
+        boolSynchronizeClock = CheckBoxSynchClock.Checked
+    End Sub
 
+    Private Sub CheckBoxMilitaryTime_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxMilitaryTime.CheckedChanged
+        boolUseMilitaryTime = CheckBoxMilitaryTime.Checked
+    End Sub
 End Class
