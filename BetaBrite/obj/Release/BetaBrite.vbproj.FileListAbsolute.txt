@@ -22,3 +22,16 @@ C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Release\Be
 C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Release\BetaBrite.Form1.resources
 C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Release\BetaBrite.Resources.resources
 C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Release\BetaBrite.vbproj.GenerateResource.Cache
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\bin\Release\BetaBrite.exe.config
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\bin\Release\BetaBrite.exe
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\bin\Release\BetaBrite.pdb
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\bin\Release\BetaBrite.xml
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Release\BetaBrite.vbprojAssemblyReference.cache
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Release\BetaBrite.AboutBox1.resources
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Release\BetaBrite.Form1.resources
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Release\BetaBrite.Resources.resources
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Release\BetaBrite.vbproj.GenerateResource.cache
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Release\BetaBrite.vbproj.CoreCompileInputs.cache
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Release\BetaBrite.exe
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Release\BetaBrite.xml
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Release\BetaBrite.pdb

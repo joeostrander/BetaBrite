@@ -34,9 +34,9 @@ BetaBrite
 </member>
 <member name="P:BetaBrite.Protocol.Address">
  <summary>
- The identifier or “address” of the sign represented by two ASCII digits as a number between “00” and “FF” (0 to 255). 
- Address "00" is reserved as a broadcast address. The wildcard character “?” (3FH) can be used to send messages to a 
- range of addresses. For example, a Sign Address of “0?” will access signs with address between 01H and 0FH (1 and 15).
+ The identifier or �address� of the sign represented by two ASCII digits as a number between �00� and �FF� (0 to 255).
+ Address "00" is reserved as a broadcast address. The wildcard character �?� (3FH) can be used to send messages to a
+ range of addresses. For example, a Sign Address of �0?� will access signs with address between 01H and 0FH (1 and 15).
  Defaults to "00"
  </summary>
 </member>
@@ -154,7 +154,7 @@ BetaBrite
  if it's less thatn h61... then just prefix n...
  Public Enum Special As Byte
  </remarks>
- 
+
      '<summary>
      no special mode selected; used as a default only
      '</summary>
@@ -180,7 +180,7 @@ BetaBrite
 </member>
 <member name="F:BetaBrite.Protocol.Transition.Switch">
  <summary>
- Alternating characters “switch” off the sign up and down. New message “switches” on in a similar manner
+ Alternating characters �switch� off the sign up and down. New message �switches� on in a similar manner
  </summary>
 </member>
 <member name="F:BetaBrite.Protocol.Transition.Spray">
@@ -230,7 +230,7 @@ BetaBrite
 </member>
 <member name="F:BetaBrite.Protocol.Transition.DontDrink">
  <summary>
- A car runs into a cocktail glass and is replaced with the text “Please don’t drink and drive”
+ A car runs into a cocktail glass and is replaced with the text �Please don�t drink and drive�
  </summary>
 </member>
 <member name="F:BetaBrite.Protocol.Transition.Fish">
@@ -317,7 +317,7 @@ BetaBrite
 </member>
 <member name="T:BetaBrite.Protocol.SetRunSequenceCommand">
  <summary>
- Sets the run (display) sequence for a series of 1-128 text files. If a file label is invalid or 
+ Sets the run (display) sequence for a series of 1-128 text files. If a file label is invalid or
  does not exist, the next one in the sequence will run.
  </summary>
 </member>

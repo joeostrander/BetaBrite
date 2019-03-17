@@ -69,9 +69,12 @@ Partial Class Form1
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBoxText = New System.Windows.Forms.GroupBox()
+        Me.ButtonBrowse = New System.Windows.Forms.Button()
+        Me.CheckBoxUseFile = New System.Windows.Forms.CheckBox()
         Me.TextBoxUpdateSeconds = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBoxImage = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ContextMenuStripTRAY = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -99,9 +102,10 @@ Partial Class Form1
         'LabelLEDPort
         '
         Me.LabelLEDPort.AutoSize = True
-        Me.LabelLEDPort.Location = New System.Drawing.Point(3, 9)
+        Me.LabelLEDPort.Location = New System.Drawing.Point(4, 11)
+        Me.LabelLEDPort.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelLEDPort.Name = "LabelLEDPort"
-        Me.LabelLEDPort.Size = New System.Drawing.Size(53, 13)
+        Me.LabelLEDPort.Size = New System.Drawing.Size(69, 17)
         Me.LabelLEDPort.TabIndex = 0
         Me.LabelLEDPort.Text = "&LED Port:"
         '
@@ -109,81 +113,85 @@ Partial Class Form1
         '
         Me.ComboBoxLEDPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxLEDPort.FormattingEnabled = True
-        Me.ComboBoxLEDPort.Location = New System.Drawing.Point(6, 25)
+        Me.ComboBoxLEDPort.Location = New System.Drawing.Point(8, 31)
+        Me.ComboBoxLEDPort.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBoxLEDPort.Name = "ComboBoxLEDPort"
-        Me.ComboBoxLEDPort.Size = New System.Drawing.Size(446, 21)
+        Me.ComboBoxLEDPort.Size = New System.Drawing.Size(593, 24)
         Me.ComboBoxLEDPort.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(3, 70)
+        Me.Label1.Location = New System.Drawing.Point(4, 86)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(71, 13)
+        Me.Label1.Size = New System.Drawing.Size(92, 17)
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "&Text to Send:"
         '
         'TextBoxMessage
         '
         Me.TextBoxMessage.ContextMenuStrip = Me.ContextMenuStripMessage
-        Me.TextBoxMessage.Location = New System.Drawing.Point(6, 86)
+        Me.TextBoxMessage.Location = New System.Drawing.Point(8, 106)
+        Me.TextBoxMessage.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxMessage.Name = "TextBoxMessage"
-        Me.TextBoxMessage.Size = New System.Drawing.Size(440, 20)
+        Me.TextBoxMessage.Size = New System.Drawing.Size(585, 22)
         Me.TextBoxMessage.TabIndex = 9
         '
         'ContextMenuStripMessage
         '
+        Me.ContextMenuStripMessage.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ContextMenuStripMessage.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ColorsToolStripMenuItem, Me.ExtendedCharsToolStripMenuItem, Me.FontsToolStripMenuItem, Me.DateToolStripMenuItem, Me.TimeToolStripMenuItem, Me.SystemTimeToolStripMenuItem, Me.SystemDateToolStripMenuItem, Me.URLToolStripMenuItem})
         Me.ContextMenuStripMessage.Name = "ContextMenuStripMessage"
         Me.ContextMenuStripMessage.ShowImageMargin = False
-        Me.ContextMenuStripMessage.Size = New System.Drawing.Size(131, 180)
+        Me.ContextMenuStripMessage.Size = New System.Drawing.Size(156, 196)
         '
         'ColorsToolStripMenuItem
         '
         Me.ColorsToolStripMenuItem.Name = "ColorsToolStripMenuItem"
-        Me.ColorsToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.ColorsToolStripMenuItem.Size = New System.Drawing.Size(185, 24)
         Me.ColorsToolStripMenuItem.Text = "&Colors"
         '
         'ExtendedCharsToolStripMenuItem
         '
         Me.ExtendedCharsToolStripMenuItem.Name = "ExtendedCharsToolStripMenuItem"
-        Me.ExtendedCharsToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.ExtendedCharsToolStripMenuItem.Size = New System.Drawing.Size(185, 24)
         Me.ExtendedCharsToolStripMenuItem.Text = "&Extended Chars"
         '
         'FontsToolStripMenuItem
         '
         Me.FontsToolStripMenuItem.Name = "FontsToolStripMenuItem"
-        Me.FontsToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.FontsToolStripMenuItem.Size = New System.Drawing.Size(185, 24)
         Me.FontsToolStripMenuItem.Text = "&Fonts"
         '
         'DateToolStripMenuItem
         '
         Me.DateToolStripMenuItem.Name = "DateToolStripMenuItem"
-        Me.DateToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.DateToolStripMenuItem.Size = New System.Drawing.Size(185, 24)
         Me.DateToolStripMenuItem.Text = "&Date"
         '
         'TimeToolStripMenuItem
         '
         Me.TimeToolStripMenuItem.Name = "TimeToolStripMenuItem"
-        Me.TimeToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.TimeToolStripMenuItem.Size = New System.Drawing.Size(185, 24)
         Me.TimeToolStripMenuItem.Text = "&Time"
         '
         'SystemTimeToolStripMenuItem
         '
         Me.SystemTimeToolStripMenuItem.Name = "SystemTimeToolStripMenuItem"
-        Me.SystemTimeToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.SystemTimeToolStripMenuItem.Size = New System.Drawing.Size(185, 24)
         Me.SystemTimeToolStripMenuItem.Text = "&System Time"
         '
         'SystemDateToolStripMenuItem
         '
         Me.SystemDateToolStripMenuItem.Name = "SystemDateToolStripMenuItem"
-        Me.SystemDateToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.SystemDateToolStripMenuItem.Size = New System.Drawing.Size(185, 24)
         Me.SystemDateToolStripMenuItem.Text = "S&ystem Date"
         '
         'URLToolStripMenuItem
         '
         Me.URLToolStripMenuItem.Name = "URLToolStripMenuItem"
-        Me.URLToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.URLToolStripMenuItem.Size = New System.Drawing.Size(185, 24)
         Me.URLToolStripMenuItem.Text = "&URL"
         '
         'ComboBoxColor
@@ -191,25 +199,28 @@ Partial Class Form1
         Me.ComboBoxColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxColor.FormattingEnabled = True
         Me.ComboBoxColor.Items.AddRange(New Object() {""})
-        Me.ComboBoxColor.Location = New System.Drawing.Point(6, 36)
+        Me.ComboBoxColor.Location = New System.Drawing.Point(8, 44)
+        Me.ComboBoxColor.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBoxColor.Name = "ComboBoxColor"
-        Me.ComboBoxColor.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBoxColor.Size = New System.Drawing.Size(160, 24)
         Me.ComboBoxColor.TabIndex = 1
         '
         'LabelColor
         '
         Me.LabelColor.AutoSize = True
-        Me.LabelColor.Location = New System.Drawing.Point(3, 20)
+        Me.LabelColor.Location = New System.Drawing.Point(4, 25)
+        Me.LabelColor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelColor.Name = "LabelColor"
-        Me.LabelColor.Size = New System.Drawing.Size(34, 13)
+        Me.LabelColor.Size = New System.Drawing.Size(45, 17)
         Me.LabelColor.TabIndex = 0
         Me.LabelColor.Text = "C&olor:"
         '
         'ButtonSend
         '
-        Me.ButtonSend.Location = New System.Drawing.Point(18, 418)
+        Me.ButtonSend.Location = New System.Drawing.Point(24, 514)
+        Me.ButtonSend.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonSend.Name = "ButtonSend"
-        Me.ButtonSend.Size = New System.Drawing.Size(100, 35)
+        Me.ButtonSend.Size = New System.Drawing.Size(133, 43)
         Me.ButtonSend.TabIndex = 5
         Me.ButtonSend.Text = "&Send Text"
         Me.ButtonSend.UseVisualStyleBackColor = True
@@ -217,9 +228,10 @@ Partial Class Form1
         'ButtonClear
         '
         Me.ButtonClear.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.ButtonClear.Location = New System.Drawing.Point(232, 418)
+        Me.ButtonClear.Location = New System.Drawing.Point(309, 514)
+        Me.ButtonClear.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonClear.Name = "ButtonClear"
-        Me.ButtonClear.Size = New System.Drawing.Size(100, 35)
+        Me.ButtonClear.Size = New System.Drawing.Size(133, 43)
         Me.ButtonClear.TabIndex = 7
         Me.ButtonClear.Text = "&Clear Display"
         Me.ButtonClear.UseVisualStyleBackColor = True
@@ -229,39 +241,43 @@ Partial Class Form1
         Me.ComboBoxMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxMode.FormattingEnabled = True
         Me.ComboBoxMode.Items.AddRange(New Object() {""})
-        Me.ComboBoxMode.Location = New System.Drawing.Point(133, 36)
+        Me.ComboBoxMode.Location = New System.Drawing.Point(177, 44)
+        Me.ComboBoxMode.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBoxMode.Name = "ComboBoxMode"
-        Me.ComboBoxMode.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBoxMode.Size = New System.Drawing.Size(160, 24)
         Me.ComboBoxMode.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(130, 20)
+        Me.Label2.Location = New System.Drawing.Point(173, 25)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(37, 13)
+        Me.Label2.Size = New System.Drawing.Size(47, 17)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "&Mode:"
         '
         'ContextMenuStrip1
         '
+        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.ShowImageMargin = False
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(83, 26)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(95, 28)
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(82, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(94, 24)
         Me.AboutToolStripMenuItem.Text = "&About"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 109)
+        Me.Label3.Location = New System.Drawing.Point(4, 134)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(156, 13)
+        Me.Label3.Size = New System.Drawing.Size(211, 17)
         Me.Label3.TabIndex = 10
         Me.Label3.Text = "(right-click field to insert special)"
         '
@@ -270,26 +286,29 @@ Partial Class Form1
         Me.ComboBoxFont.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxFont.FormattingEnabled = True
         Me.ComboBoxFont.Items.AddRange(New Object() {""})
-        Me.ComboBoxFont.Location = New System.Drawing.Point(260, 36)
+        Me.ComboBoxFont.Location = New System.Drawing.Point(347, 44)
+        Me.ComboBoxFont.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBoxFont.Name = "ComboBoxFont"
-        Me.ComboBoxFont.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBoxFont.Size = New System.Drawing.Size(160, 24)
         Me.ComboBoxFont.TabIndex = 5
         '
         'LabelFont
         '
         Me.LabelFont.AutoSize = True
-        Me.LabelFont.Location = New System.Drawing.Point(257, 20)
+        Me.LabelFont.Location = New System.Drawing.Point(343, 25)
+        Me.LabelFont.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelFont.Name = "LabelFont"
-        Me.LabelFont.Size = New System.Drawing.Size(31, 13)
+        Me.LabelFont.Size = New System.Drawing.Size(40, 17)
         Me.LabelFont.TabIndex = 4
         Me.LabelFont.Text = "&Font:"
         '
         'ButtonSetClock
         '
         Me.ButtonSetClock.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.ButtonSetClock.Location = New System.Drawing.Point(338, 418)
+        Me.ButtonSetClock.Location = New System.Drawing.Point(451, 514)
+        Me.ButtonSetClock.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonSetClock.Name = "ButtonSetClock"
-        Me.ButtonSetClock.Size = New System.Drawing.Size(99, 35)
+        Me.ButtonSetClock.Size = New System.Drawing.Size(132, 43)
         Me.ButtonSetClock.TabIndex = 0
         Me.ButtonSetClock.Text = "Set Cloc&k"
         Me.ButtonSetClock.UseVisualStyleBackColor = True
@@ -299,25 +318,28 @@ Partial Class Form1
         Me.ComboBoxSpeed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxSpeed.FormattingEnabled = True
         Me.ComboBoxSpeed.Items.AddRange(New Object() {"", "1", "2", "3", "4", "5"})
-        Me.ComboBoxSpeed.Location = New System.Drawing.Point(387, 36)
+        Me.ComboBoxSpeed.Location = New System.Drawing.Point(516, 44)
+        Me.ComboBoxSpeed.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBoxSpeed.Name = "ComboBoxSpeed"
-        Me.ComboBoxSpeed.Size = New System.Drawing.Size(59, 21)
+        Me.ComboBoxSpeed.Size = New System.Drawing.Size(77, 24)
         Me.ComboBoxSpeed.TabIndex = 7
         '
         'LabelSpeed
         '
         Me.LabelSpeed.AutoSize = True
-        Me.LabelSpeed.Location = New System.Drawing.Point(384, 20)
+        Me.LabelSpeed.Location = New System.Drawing.Point(512, 25)
+        Me.LabelSpeed.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LabelSpeed.Name = "LabelSpeed"
-        Me.LabelSpeed.Size = New System.Drawing.Size(41, 13)
+        Me.LabelSpeed.Size = New System.Drawing.Size(53, 17)
         Me.LabelSpeed.TabIndex = 6
         Me.LabelSpeed.Text = "S&peed:"
         '
         'ButtonSendImage
         '
-        Me.ButtonSendImage.Location = New System.Drawing.Point(124, 418)
+        Me.ButtonSendImage.Location = New System.Drawing.Point(165, 514)
+        Me.ButtonSendImage.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonSendImage.Name = "ButtonSendImage"
-        Me.ButtonSendImage.Size = New System.Drawing.Size(100, 35)
+        Me.ButtonSendImage.Size = New System.Drawing.Size(133, 43)
         Me.ButtonSendImage.TabIndex = 6
         Me.ButtonSendImage.Text = "Send &Image"
         Me.ButtonSendImage.UseVisualStyleBackColor = True
@@ -326,14 +348,16 @@ Partial Class Form1
         '
         Me.PictureBox1.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.PictureBox1.ContextMenuStrip = Me.ContextMenuStripBLANK
-        Me.PictureBox1.Location = New System.Drawing.Point(11, 19)
+        Me.PictureBox1.Location = New System.Drawing.Point(15, 23)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(480, 42)
+        Me.PictureBox1.Size = New System.Drawing.Size(640, 52)
         Me.PictureBox1.TabIndex = 19
         Me.PictureBox1.TabStop = False
         '
         'ContextMenuStripBLANK
         '
+        Me.ContextMenuStripBLANK.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ContextMenuStripBLANK.Name = "ContextMenuStripBLANK"
         Me.ContextMenuStripBLANK.Size = New System.Drawing.Size(61, 4)
         '
@@ -341,63 +365,70 @@ Partial Class Form1
         '
         Me.PanelBlack.BackColor = System.Drawing.Color.Black
         Me.PanelBlack.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PanelBlack.Location = New System.Drawing.Point(11, 67)
+        Me.PanelBlack.Location = New System.Drawing.Point(15, 82)
+        Me.PanelBlack.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelBlack.Name = "PanelBlack"
-        Me.PanelBlack.Size = New System.Drawing.Size(40, 28)
+        Me.PanelBlack.Size = New System.Drawing.Size(53, 34)
         Me.PanelBlack.TabIndex = 0
         '
         'PanelRed
         '
         Me.PanelRed.BackColor = System.Drawing.Color.Red
         Me.PanelRed.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PanelRed.Location = New System.Drawing.Point(57, 67)
+        Me.PanelRed.Location = New System.Drawing.Point(76, 82)
+        Me.PanelRed.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelRed.Name = "PanelRed"
-        Me.PanelRed.Size = New System.Drawing.Size(40, 28)
+        Me.PanelRed.Size = New System.Drawing.Size(53, 34)
         Me.PanelRed.TabIndex = 1
         '
         'PanelGreen
         '
         Me.PanelGreen.BackColor = System.Drawing.Color.Lime
         Me.PanelGreen.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PanelGreen.Location = New System.Drawing.Point(103, 67)
+        Me.PanelGreen.Location = New System.Drawing.Point(137, 82)
+        Me.PanelGreen.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelGreen.Name = "PanelGreen"
-        Me.PanelGreen.Size = New System.Drawing.Size(40, 28)
+        Me.PanelGreen.Size = New System.Drawing.Size(53, 34)
         Me.PanelGreen.TabIndex = 2
         '
         'PanelAmber
         '
         Me.PanelAmber.BackColor = System.Drawing.Color.FromArgb(CType(CType(254, Byte), Integer), CType(CType(204, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.PanelAmber.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PanelAmber.Location = New System.Drawing.Point(149, 67)
+        Me.PanelAmber.Location = New System.Drawing.Point(199, 82)
+        Me.PanelAmber.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelAmber.Name = "PanelAmber"
-        Me.PanelAmber.Size = New System.Drawing.Size(40, 28)
+        Me.PanelAmber.Size = New System.Drawing.Size(53, 34)
         Me.PanelAmber.TabIndex = 3
         '
         'PanelDarkRed
         '
         Me.PanelDarkRed.BackColor = System.Drawing.Color.Maroon
         Me.PanelDarkRed.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PanelDarkRed.Location = New System.Drawing.Point(195, 67)
+        Me.PanelDarkRed.Location = New System.Drawing.Point(260, 82)
+        Me.PanelDarkRed.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelDarkRed.Name = "PanelDarkRed"
-        Me.PanelDarkRed.Size = New System.Drawing.Size(40, 28)
+        Me.PanelDarkRed.Size = New System.Drawing.Size(53, 34)
         Me.PanelDarkRed.TabIndex = 4
         '
         'PanelDarkGreen
         '
         Me.PanelDarkGreen.BackColor = System.Drawing.Color.Green
         Me.PanelDarkGreen.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PanelDarkGreen.Location = New System.Drawing.Point(241, 67)
+        Me.PanelDarkGreen.Location = New System.Drawing.Point(321, 82)
+        Me.PanelDarkGreen.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelDarkGreen.Name = "PanelDarkGreen"
-        Me.PanelDarkGreen.Size = New System.Drawing.Size(40, 28)
+        Me.PanelDarkGreen.Size = New System.Drawing.Size(53, 34)
         Me.PanelDarkGreen.TabIndex = 5
         '
         'PanelBrown
         '
         Me.PanelBrown.BackColor = System.Drawing.Color.FromArgb(CType(CType(202, Byte), Integer), CType(CType(134, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.PanelBrown.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PanelBrown.Location = New System.Drawing.Point(287, 67)
+        Me.PanelBrown.Location = New System.Drawing.Point(383, 82)
+        Me.PanelBrown.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelBrown.Name = "PanelBrown"
-        Me.PanelBrown.Size = New System.Drawing.Size(40, 28)
+        Me.PanelBrown.Size = New System.Drawing.Size(53, 34)
         Me.PanelBrown.TabIndex = 6
         '
         'PanelYellow
@@ -405,43 +436,48 @@ Partial Class Form1
         Me.PanelYellow.BackColor = System.Drawing.Color.Yellow
         Me.PanelYellow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.PanelYellow.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PanelYellow.Location = New System.Drawing.Point(379, 67)
+        Me.PanelYellow.Location = New System.Drawing.Point(505, 82)
+        Me.PanelYellow.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelYellow.Name = "PanelYellow"
-        Me.PanelYellow.Size = New System.Drawing.Size(40, 28)
+        Me.PanelYellow.Size = New System.Drawing.Size(52, 34)
         Me.PanelYellow.TabIndex = 8
         '
         'PanelOrange
         '
         Me.PanelOrange.BackColor = System.Drawing.Color.Orange
         Me.PanelOrange.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PanelOrange.Location = New System.Drawing.Point(333, 67)
+        Me.PanelOrange.Location = New System.Drawing.Point(444, 82)
+        Me.PanelOrange.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelOrange.Name = "PanelOrange"
-        Me.PanelOrange.Size = New System.Drawing.Size(40, 28)
+        Me.PanelOrange.Size = New System.Drawing.Size(53, 34)
         Me.PanelOrange.TabIndex = 7
         '
         'ButtonClearImage
         '
-        Me.ButtonClearImage.Location = New System.Drawing.Point(17, 101)
+        Me.ButtonClearImage.Location = New System.Drawing.Point(23, 124)
+        Me.ButtonClearImage.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonClearImage.Name = "ButtonClearImage"
-        Me.ButtonClearImage.Size = New System.Drawing.Size(80, 23)
+        Me.ButtonClearImage.Size = New System.Drawing.Size(107, 28)
         Me.ButtonClearImage.TabIndex = 9
         Me.ButtonClearImage.Text = "&Erase Image"
         Me.ButtonClearImage.UseVisualStyleBackColor = True
         '
         'ButtonLoadImage
         '
-        Me.ButtonLoadImage.Location = New System.Drawing.Point(103, 101)
+        Me.ButtonLoadImage.Location = New System.Drawing.Point(137, 124)
+        Me.ButtonLoadImage.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonLoadImage.Name = "ButtonLoadImage"
-        Me.ButtonLoadImage.Size = New System.Drawing.Size(80, 23)
+        Me.ButtonLoadImage.Size = New System.Drawing.Size(107, 28)
         Me.ButtonLoadImage.TabIndex = 10
         Me.ButtonLoadImage.Text = "Load Image"
         Me.ButtonLoadImage.UseVisualStyleBackColor = True
         '
         'ButtonSaveImage
         '
-        Me.ButtonSaveImage.Location = New System.Drawing.Point(189, 101)
+        Me.ButtonSaveImage.Location = New System.Drawing.Point(252, 124)
+        Me.ButtonSaveImage.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonSaveImage.Name = "ButtonSaveImage"
-        Me.ButtonSaveImage.Size = New System.Drawing.Size(80, 23)
+        Me.ButtonSaveImage.Size = New System.Drawing.Size(107, 28)
         Me.ButtonSaveImage.TabIndex = 11
         Me.ButtonSaveImage.Text = "Save Image"
         Me.ButtonSaveImage.UseVisualStyleBackColor = True
@@ -450,12 +486,10 @@ Partial Class Form1
         '
         Me.SaveFileDialog1.Filter = "Bitmap Files|*.bmp"
         '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.Filter = "Image Files (*.bmp,*.jpg,*.png)|*.bmp;*.jpg;*.png"
-        '
         'GroupBoxText
         '
+        Me.GroupBoxText.Controls.Add(Me.ButtonBrowse)
+        Me.GroupBoxText.Controls.Add(Me.CheckBoxUseFile)
         Me.GroupBoxText.Controls.Add(Me.TextBoxUpdateSeconds)
         Me.GroupBoxText.Controls.Add(Me.Label4)
         Me.GroupBoxText.Controls.Add(Me.ComboBoxColor)
@@ -469,32 +503,57 @@ Partial Class Form1
         Me.GroupBoxText.Controls.Add(Me.ComboBoxFont)
         Me.GroupBoxText.Controls.Add(Me.LabelSpeed)
         Me.GroupBoxText.Controls.Add(Me.ComboBoxSpeed)
-        Me.GroupBoxText.Location = New System.Drawing.Point(6, 62)
+        Me.GroupBoxText.Location = New System.Drawing.Point(8, 76)
+        Me.GroupBoxText.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBoxText.Name = "GroupBoxText"
-        Me.GroupBoxText.Size = New System.Drawing.Size(531, 135)
+        Me.GroupBoxText.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBoxText.Size = New System.Drawing.Size(724, 166)
         Me.GroupBoxText.TabIndex = 2
         Me.GroupBoxText.TabStop = False
         Me.GroupBoxText.Text = "Text"
         '
+        'ButtonBrowse
+        '
+        Me.ButtonBrowse.Location = New System.Drawing.Point(518, 103)
+        Me.ButtonBrowse.Name = "ButtonBrowse"
+        Me.ButtonBrowse.Size = New System.Drawing.Size(75, 28)
+        Me.ButtonBrowse.TabIndex = 13
+        Me.ButtonBrowse.Text = "&Browse"
+        Me.ButtonBrowse.UseVisualStyleBackColor = True
+        Me.ButtonBrowse.Visible = False
+        '
+        'CheckBoxUseFile
+        '
+        Me.CheckBoxUseFile.AutoSize = True
+        Me.CheckBoxUseFile.Location = New System.Drawing.Point(604, 108)
+        Me.CheckBoxUseFile.Name = "CheckBoxUseFile"
+        Me.CheckBoxUseFile.Size = New System.Drawing.Size(81, 21)
+        Me.CheckBoxUseFile.TabIndex = 11
+        Me.CheckBoxUseFile.Text = "Use File"
+        Me.CheckBoxUseFile.UseVisualStyleBackColor = True
+        '
         'TextBoxUpdateSeconds
         '
-        Me.TextBoxUpdateSeconds.Location = New System.Drawing.Point(453, 37)
+        Me.TextBoxUpdateSeconds.Location = New System.Drawing.Point(604, 46)
+        Me.TextBoxUpdateSeconds.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxUpdateSeconds.Name = "TextBoxUpdateSeconds"
-        Me.TextBoxUpdateSeconds.Size = New System.Drawing.Size(59, 20)
+        Me.TextBoxUpdateSeconds.Size = New System.Drawing.Size(77, 22)
         Me.TextBoxUpdateSeconds.TabIndex = 12
         Me.TextBoxUpdateSeconds.Text = "0"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(450, 20)
+        Me.Label4.Location = New System.Drawing.Point(600, 25)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(73, 13)
+        Me.Label4.Size = New System.Drawing.Size(97, 17)
         Me.Label4.TabIndex = 11
         Me.Label4.Text = "&Update (secs)"
         '
         'GroupBoxImage
         '
+        Me.GroupBoxImage.Controls.Add(Me.Button1)
         Me.GroupBoxImage.Controls.Add(Me.PictureBox1)
         Me.GroupBoxImage.Controls.Add(Me.PanelBlack)
         Me.GroupBoxImage.Controls.Add(Me.PanelRed)
@@ -508,12 +567,26 @@ Partial Class Form1
         Me.GroupBoxImage.Controls.Add(Me.PanelBrown)
         Me.GroupBoxImage.Controls.Add(Me.PanelOrange)
         Me.GroupBoxImage.Controls.Add(Me.PanelYellow)
-        Me.GroupBoxImage.Location = New System.Drawing.Point(6, 203)
+        Me.GroupBoxImage.Location = New System.Drawing.Point(8, 250)
+        Me.GroupBoxImage.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBoxImage.Name = "GroupBoxImage"
-        Me.GroupBoxImage.Size = New System.Drawing.Size(531, 143)
+        Me.GroupBoxImage.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBoxImage.Size = New System.Drawing.Size(724, 176)
         Me.GroupBoxImage.TabIndex = 4
         Me.GroupBoxImage.TabStop = False
         Me.GroupBoxImage.Text = "Image"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(597, 88)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(100, 28)
+        Me.Button1.TabIndex = 11
+        Me.Button1.TabStop = False
+        Me.Button1.Text = "TEST"
+        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'Timer1
         '
@@ -528,55 +601,59 @@ Partial Class Form1
         '
         'ContextMenuStripTRAY
         '
+        Me.ContextMenuStripTRAY.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ContextMenuStripTRAY.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RunAtStartupToolStripMenuItemTRAY, Me.AboutToolStripMenuItem1, Me.ExitToolStripMenuItem})
         Me.ContextMenuStripTRAY.Name = "ContextMenuStripTRAY"
         Me.ContextMenuStripTRAY.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.ContextMenuStripTRAY.ShowCheckMargin = True
         Me.ContextMenuStripTRAY.ShowImageMargin = False
-        Me.ContextMenuStripTRAY.Size = New System.Drawing.Size(150, 70)
+        Me.ContextMenuStripTRAY.Size = New System.Drawing.Size(173, 76)
         '
         'RunAtStartupToolStripMenuItemTRAY
         '
         Me.RunAtStartupToolStripMenuItemTRAY.CheckOnClick = True
         Me.RunAtStartupToolStripMenuItemTRAY.Name = "RunAtStartupToolStripMenuItemTRAY"
-        Me.RunAtStartupToolStripMenuItemTRAY.Size = New System.Drawing.Size(149, 22)
+        Me.RunAtStartupToolStripMenuItemTRAY.Size = New System.Drawing.Size(172, 24)
         Me.RunAtStartupToolStripMenuItemTRAY.Text = "&Run at Startup"
         '
         'AboutToolStripMenuItem1
         '
         Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
-        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(149, 22)
+        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(172, 24)
         Me.AboutToolStripMenuItem1.Text = "&About"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(172, 24)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'ButtonSaveSettings
         '
         Me.ButtonSaveSettings.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.ButtonSaveSettings.Location = New System.Drawing.Point(443, 418)
+        Me.ButtonSaveSettings.Location = New System.Drawing.Point(591, 514)
+        Me.ButtonSaveSettings.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonSaveSettings.Name = "ButtonSaveSettings"
-        Me.ButtonSaveSettings.Size = New System.Drawing.Size(99, 35)
+        Me.ButtonSaveSettings.Size = New System.Drawing.Size(132, 43)
         Me.ButtonSaveSettings.TabIndex = 8
         Me.ButtonSaveSettings.Text = "Sa&ve Settings"
         Me.ButtonSaveSettings.UseVisualStyleBackColor = True
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 463)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 572)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(559, 22)
+        Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
+        Me.StatusStrip1.Size = New System.Drawing.Size(745, 25)
         Me.StatusStrip1.TabIndex = 9
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(120, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(153, 20)
         Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
         '
         'GroupBox1
@@ -584,9 +661,11 @@ Partial Class Form1
         Me.GroupBox1.Controls.Add(Me.CheckBoxRunAtStartup)
         Me.GroupBox1.Controls.Add(Me.CheckBoxMilitaryTime)
         Me.GroupBox1.Controls.Add(Me.CheckBoxSynchClock)
-        Me.GroupBox1.Location = New System.Drawing.Point(6, 352)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 433)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(531, 46)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Size = New System.Drawing.Size(724, 57)
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Settin&gs"
@@ -594,9 +673,10 @@ Partial Class Form1
         'CheckBoxRunAtStartup
         '
         Me.CheckBoxRunAtStartup.AutoSize = True
-        Me.CheckBoxRunAtStartup.Location = New System.Drawing.Point(293, 19)
+        Me.CheckBoxRunAtStartup.Location = New System.Drawing.Point(391, 23)
+        Me.CheckBoxRunAtStartup.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBoxRunAtStartup.Name = "CheckBoxRunAtStartup"
-        Me.CheckBoxRunAtStartup.Size = New System.Drawing.Size(93, 17)
+        Me.CheckBoxRunAtStartup.Size = New System.Drawing.Size(120, 21)
         Me.CheckBoxRunAtStartup.TabIndex = 2
         Me.CheckBoxRunAtStartup.Text = "Run at startup"
         Me.CheckBoxRunAtStartup.UseVisualStyleBackColor = True
@@ -604,9 +684,10 @@ Partial Class Form1
         'CheckBoxMilitaryTime
         '
         Me.CheckBoxMilitaryTime.AutoSize = True
-        Me.CheckBoxMilitaryTime.Location = New System.Drawing.Point(155, 19)
+        Me.CheckBoxMilitaryTime.Location = New System.Drawing.Point(207, 23)
+        Me.CheckBoxMilitaryTime.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBoxMilitaryTime.Name = "CheckBoxMilitaryTime"
-        Me.CheckBoxMilitaryTime.Size = New System.Drawing.Size(106, 17)
+        Me.CheckBoxMilitaryTime.Size = New System.Drawing.Size(138, 21)
         Me.CheckBoxMilitaryTime.TabIndex = 1
         Me.CheckBoxMilitaryTime.Text = "Use Military Time"
         Me.CheckBoxMilitaryTime.UseVisualStyleBackColor = True
@@ -614,9 +695,10 @@ Partial Class Form1
         'CheckBoxSynchClock
         '
         Me.CheckBoxSynchClock.AutoSize = True
-        Me.CheckBoxSynchClock.Location = New System.Drawing.Point(17, 19)
+        Me.CheckBoxSynchClock.Location = New System.Drawing.Point(23, 23)
+        Me.CheckBoxSynchClock.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBoxSynchClock.Name = "CheckBoxSynchClock"
-        Me.CheckBoxSynchClock.Size = New System.Drawing.Size(114, 17)
+        Me.CheckBoxSynchClock.Size = New System.Drawing.Size(146, 21)
         Me.CheckBoxSynchClock.TabIndex = 0
         Me.CheckBoxSynchClock.Text = "Synchronize Clock"
         Me.ToolTip1.SetToolTip(Me.CheckBoxSynchClock, "Synchronize the clock with PC clock")
@@ -625,10 +707,10 @@ Partial Class Form1
         'Form1
         '
         Me.AcceptButton = Me.ButtonSend
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.ButtonClear
-        Me.ClientSize = New System.Drawing.Size(559, 485)
+        Me.ClientSize = New System.Drawing.Size(745, 597)
         Me.ContextMenuStrip = Me.ContextMenuStrip1
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.StatusStrip1)
@@ -643,8 +725,9 @@ Partial Class Form1
         Me.Controls.Add(Me.LabelLEDPort)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(575, 484)
+        Me.MinimumSize = New System.Drawing.Size(761, 585)
         Me.Name = "Form1"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -726,4 +809,7 @@ Partial Class Form1
     Friend WithEvents CheckBoxMilitaryTime As CheckBox
     Friend WithEvents CheckBoxSynchClock As CheckBox
     Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents Button1 As Button
+    Friend WithEvents CheckBoxUseFile As CheckBox
+    Friend WithEvents ButtonBrowse As Button
 End Class

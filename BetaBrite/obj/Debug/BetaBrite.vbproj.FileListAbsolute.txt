@@ -16,8 +16,22 @@ C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Debug\Beta
 C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\bin\Debug\BetaBrite.exe
 C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\bin\Debug\BetaBrite.pdb
 C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\bin\Debug\BetaBrite.xml
-C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Debug\BetaBrite.vbprojResolveAssemblyReference.cache
 C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Debug\BetaBrite.AboutBox1.resources
 C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Debug\BetaBrite.Form1.resources
 C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Debug\BetaBrite.Resources.resources
 C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Debug\BetaBrite.vbproj.GenerateResource.Cache
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Debug\BetaBrite.vbprojAssemblyReference.cache
+C:\Users\qojmo2\Google Drive\DEV\VisualStudio\BetaBrite\BetaBrite\obj\Debug\BetaBrite.vbproj.CoreCompileInputs.cache
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\bin\Debug\BetaBrite.exe.config
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\bin\Debug\BetaBrite.exe
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\bin\Debug\BetaBrite.pdb
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\bin\Debug\BetaBrite.xml
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Debug\BetaBrite.vbprojAssemblyReference.cache
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Debug\BetaBrite.AboutBox1.resources
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Debug\BetaBrite.Form1.resources
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Debug\BetaBrite.Resources.resources
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Debug\BetaBrite.vbproj.GenerateResource.cache
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Debug\BetaBrite.vbproj.CoreCompileInputs.cache
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Debug\BetaBrite.exe
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Debug\BetaBrite.xml
+C:\Users\qojmo2\Downloads\BetaBrite\BetaBrite\BetaBrite\obj\Debug\BetaBrite.pdb

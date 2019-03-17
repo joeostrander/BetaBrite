@@ -54,9 +54,9 @@ Public Class Protocol
     End Sub
 
     ''' <summary>
-    ''' The identifier or “address” of the sign represented by two ASCII digits as a number between “00” and “FF” (0 to 255). 
-    ''' Address "00" is reserved as a broadcast address. The wildcard character “?” (3FH) can be used to send messages to a 
-    ''' range of addresses. For example, a Sign Address of “0?” will access signs with address between 01H and 0FH (1 and 15).
+    ''' The identifier or ï¿½addressï¿½ of the sign represented by two ASCII digits as a number between ï¿½00ï¿½ and ï¿½FFï¿½ (0 to 255).
+    ''' Address "00" is reserved as a broadcast address. The wildcard character ï¿½?ï¿½ (3FH) can be used to send messages to a
+    ''' range of addresses. For example, a Sign Address of ï¿½0?ï¿½ will access signs with address between 01H and 0FH (1 and 15).
     ''' Defaults to "00"
     ''' </summary>
     Public Property Address() As String
@@ -296,7 +296,7 @@ Public Class Protocol
         ''' if it's less thatn h61... then just prefix n...
         ''' Public Enum Special As Byte
         ''' </remarks>
-        ''' 
+        '''
         '''     '<summary>
         '''     no special mode selected; used as a default only
         '''     '</summary>
@@ -318,7 +318,7 @@ Public Class Protocol
         ''' </summary>
         Interlock = &H33    ' 3
         ''' <summary>
-        ''' Alternating characters “switch” off the sign up and down. New message “switches” on in a similar manner
+        ''' Alternating characters ï¿½switchï¿½ off the sign up and down. New message ï¿½switchesï¿½ on in a similar manner
         ''' </summary>
         Switch = &H34       ' 4
         ''' <summary>
@@ -358,7 +358,7 @@ Public Class Protocol
         ''' </summary>
         NoSmoking = &H55    ' U
         ''' <summary>
-        ''' A car runs into a cocktail glass and is replaced with the text “Please don’t drink and drive”
+        ''' A car runs into a cocktail glass and is replaced with the text ï¿½Please donï¿½t drink and driveï¿½
         ''' </summary>
         DontDrink = &H56    ' V
         ''' <summary>
@@ -393,7 +393,7 @@ Public Class Protocol
         ''' <summary>
         ''' File represents a string variable
         ''' </summary>
-        [String] = &H42     ' B 
+        [String] = &H42     ' B
         ''' <summary>
         ''' File represents a bitmap image
         ''' </summary>
@@ -664,7 +664,8 @@ Public Class Protocol
                 Next
                 sb.Append(Convert.ToChar(Ascii.CR))
             Next
-            Return sb.ToString.ToUpper
+            'Return sb.ToString.ToUpper
+            Return sb.ToString()    'JOE EDIT... it's OK to not have uppercase file labels...
         End Function
 
     End Class
@@ -782,7 +783,7 @@ Public Class Protocol
                     '-- constant padding; not used
                     sb.Append("0000")
                 Case FileType.Picture
-                    'Valid entries are “1000” = monochrome, “2000” = 3-color, “4000”= 8-color (RGB)
+                    'Valid entries are ï¿½1000ï¿½ = monochrome, ï¿½2000ï¿½ = 3-color, ï¿½4000ï¿½= 8-color (RGB)
                     '-- always 4000 for betabrite..
                     sb.Append("4000")
             End Select
@@ -915,7 +916,7 @@ Public Class Protocol
     End Enum
 
     ''' <summary>
-    ''' Sets the run (display) sequence for a series of 1-128 text files. If a file label is invalid or 
+    ''' Sets the run (display) sequence for a series of 1-128 text files. If a file label is invalid or
     ''' does not exist, the next one in the sequence will run.
     ''' </summary>
     Public Class SetRunSequenceCommand
@@ -1364,91 +1365,91 @@ Public Class Protocol
     Private Shared Function ExpandInternationalChar(ByVal c As Char) As String
         Dim asciimap As Integer
         Select Case c
-            Case "Ç"
+            Case "ï¿½"
                 asciimap = &H20
-            Case "Ü"
+            Case "ï¿½"
                 asciimap = &H21
-            Case "é"
+            Case "ï¿½"
                 asciimap = &H22
-            Case "â"
+            Case "ï¿½"
                 asciimap = &H23
-            Case "ä"
+            Case "ï¿½"
                 asciimap = &H24
-            Case "à"
+            Case "ï¿½"
                 asciimap = &H25
-            Case "å"
+            Case "ï¿½"
                 asciimap = &H26
-            Case "ç"
+            Case "ï¿½"
                 asciimap = &H27
-            Case "ê"
+            Case "ï¿½"
                 asciimap = &H28
-            Case "ë"
+            Case "ï¿½"
                 asciimap = &H29
-            Case "è"
+            Case "ï¿½"
                 asciimap = &H2A
-            Case "Ï"
+            Case "ï¿½"
                 asciimap = &H2B
-            Case "Î"
+            Case "ï¿½"
                 asciimap = &H2C
-            Case "Ì"
+            Case "ï¿½"
                 asciimap = &H2D
-            Case "Ä"
+            Case "ï¿½"
                 asciimap = &H2E
-            Case "Å"
+            Case "ï¿½"
                 asciimap = &H2F
-            Case "É"
+            Case "ï¿½"
                 asciimap = &H30
-            Case "æ"
+            Case "ï¿½"
                 asciimap = &H31
-            Case "Æ"
+            Case "ï¿½"
                 asciimap = &H32
-            Case "ô"
+            Case "ï¿½"
                 asciimap = &H33
-            Case "ö"
+            Case "ï¿½"
                 asciimap = &H34
-            Case "ò"
+            Case "ï¿½"
                 asciimap = &H35
-            Case "Û"
+            Case "ï¿½"
                 asciimap = &H36
-            Case "ù"
+            Case "ï¿½"
                 asciimap = &H37
-            Case "Ÿ"
+            Case "ï¿½"
                 asciimap = &H38
-            Case "Ö"
+            Case "ï¿½"
                 asciimap = &H39
-            Case "Ü"
+            Case "ï¿½"
                 asciimap = &H3A
-            Case "¢"
+            Case "ï¿½"
                 asciimap = &H3B
-            Case "£"
+            Case "ï¿½"
                 asciimap = &H3C
-            Case "¥"
+            Case "ï¿½"
                 asciimap = &H3D
-            Case "ƒ"
+            Case "ï¿½"
                 asciimap = &H3F
-            Case "á"
+            Case "ï¿½"
                 asciimap = &H40
-            Case "í"
+            Case "ï¿½"
                 asciimap = &H41
-            Case "ó"
+            Case "ï¿½"
                 asciimap = &H42
-            Case "ú"
+            Case "ï¿½"
                 asciimap = &H43
-            Case "ñ"
+            Case "ï¿½"
                 asciimap = &H44
-            Case "Ñ"
+            Case "ï¿½"
                 asciimap = &H45
-            Case "¿"
+            Case "ï¿½"
                 asciimap = &H48
-            Case "°"
+            Case "ï¿½"
                 asciimap = &H49
-            Case "¡"
+            Case "ï¿½"
                 asciimap = &H4A
-            Case " "
+            Case "ï¿½"
                 asciimap = &H4B
-            Case "ø"
+            Case "ï¿½"
                 asciimap = &H4D
-            Case "Ø"
+            Case "ï¿½"
                 asciimap = &H4C
             Case "c"
                 asciimap = &H4E
@@ -1460,33 +1461,33 @@ Public Class Protocol
                 asciimap = &H51
             Case "d"
                 asciimap = &H52
-            Case "Ð"
+            Case "ï¿½"
                 asciimap = &H53
-            Case "Š"
+            Case "ï¿½"
                 asciimap = &H54
-            Case "Ž"
+            Case "ï¿½"
                 asciimap = &H55
-            Case "ž"
+            Case "ï¿½"
                 asciimap = &H56
-            Case "ß"
+            Case "ï¿½"
                 asciimap = &H57
-            Case "š"
+            Case "ï¿½"
                 asciimap = &H58
-            Case "Á"
+            Case "ï¿½"
                 asciimap = &H5A
-            Case "À"
+            Case "ï¿½"
                 asciimap = &H5B
-            Case "Ã"
+            Case "ï¿½"
                 asciimap = &H5C
-            Case "ã"
+            Case "ï¿½"
                 asciimap = &H5D
-            Case "Ê"
+            Case "ï¿½"
                 asciimap = &H5E
-            Case "Í"
+            Case "ï¿½"
                 asciimap = &H5F
-            Case "Õ"
+            Case "ï¿½"
                 asciimap = &H60
-            Case "õ"
+            Case "ï¿½"
                 asciimap = &H61
             Case Else
                 '-- remove anything we can't map; it'll be illegal anyway
@@ -1647,7 +1648,7 @@ Public Class Protocol
         Try
             o = System.Enum.Parse(t, s, True)
         Catch ex As System.ArgumentException
-            '-- if the string representation provided doesn't match 
+            '-- if the string representation provided doesn't match
             '-- any known enum case, we'll get this exception
         End Try
         Return o

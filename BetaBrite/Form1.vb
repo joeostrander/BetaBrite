@@ -22,9 +22,11 @@ Public Class Form1
     Private boolStartup As Boolean = False
     Private boolSynchronizeClock As Boolean = True
     Private boolUseMilitaryTime As Boolean = True
+    Private boolUseTextFile As Boolean = False
+    Private strTextFilePath As String = ""
 
 
-    Private boolTrayExit As Boolean = False
+    'Private boolTrayExit As Boolean = False
 
 
     Private Brush_Selected As Brush = Brushes.Yellow
@@ -206,6 +208,15 @@ Public Class Form1
             .Open()
             Try
                 .Display(strTextToSend, trans)
+
+                'TESTING
+                '.UseMemoryText("A"c, 128)
+                '.AllocateMemory()
+                'strTextToSend = "<callpic=B>"
+                'Console.WriteLine("text:  {0}", strTextToSend)
+                '.SetText("A"c, strTextToSend, trans)
+
+
             Catch ex As Exception
                 'MsgBox(ex.Message, MsgBoxStyle.Exclamation)
                 ToolStripStatusLabel1.Text = ex.Message
@@ -228,6 +239,14 @@ Public Class Form1
     Private Sub Send()
         'Dim strMessage As String = FormatMessage(TextBoxMessage.Text)
         Dim strMessage As String = TextBoxMessage.Text
+        If CheckBoxUseFile.Checked Then
+            If IO.File.Exists(strMessage) Then
+                strMessage = IO.File.ReadLines(strMessage)(0)
+            Else
+                strMessage = "????"
+            End If
+        End If
+
         SendMessage2(strMessage)
     End Sub
 
@@ -377,12 +396,16 @@ Public Class Form1
                 MsgBox("Invalid extension:  " & ext & vbCrLf & vbCrLf & "Please only save as BMP.", MsgBoxStyle.Exclamation)
                 Exit Sub
             End If
-            PictureBox1.Image.Save(fn, Imaging.ImageFormat.Bmp)
+            Dim bmp As New Bitmap(PictureBox1.Image, New Size(80, 7))
+            'PictureBox1.Image.Save(fn, Imaging.ImageFormat.Bmp)
+            bmp.Save(fn, Imaging.ImageFormat.Bmp)
             MsgBox("File saved to:  " & fn, MsgBoxStyle.Information)
         End If
     End Sub
 
     Private Sub ButtonLoadImage_Click(sender As Object, e As EventArgs) Handles ButtonLoadImage.Click
+        OpenFileDialog1.Filter = "Image Files (*.bmp,*.jpg,*.png)|*.bmp;*.jpg;*.png"
+        OpenFileDialog1.Title = "Select an image file:"
         If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
             Dim fn As String = OpenFileDialog1.FileName
             Dim fi As IO.FileInfo = New IO.FileInfo(fn)
@@ -473,6 +496,8 @@ Public Class Form1
             'boolUseMilitaryTime,boolSynchronizeClock
             boolUseMilitaryTime = appRegKey.GetValue("UseMilitaryTime", True)
             boolSynchronizeClock = appRegKey.GetValue("SynchronizeClock", True)
+            boolUseTextFile = appRegKey.GetValue("UseTextFile", False)
+
 
             strSetting_Color = appRegKey.GetValue("Color", "")
             strSetting_LEDPort = appRegKey.GetValue("LEDPort", "")
@@ -482,6 +507,7 @@ Public Class Form1
             strSetting_Font = appRegKey.GetValue("Font", "")
             strSetting_Speed = appRegKey.GetValue("Speed", "")
             strSetting_UpdateSeconds = appRegKey.GetValue("UpdateSeconds", "")
+            strTextFilePath = appRegKey.GetValue("TextFilePath", "")
 
             'RunAtStartupToolStripMenuItem.Checked = boolStartup
             RunAtStartupToolStripMenuItemTRAY.Checked = boolStartup
@@ -489,6 +515,7 @@ Public Class Form1
 
             CheckBoxMilitaryTime.Checked = boolUseMilitaryTime
             CheckBoxSynchClock.Checked = boolSynchronizeClock
+            CheckBoxUseFile.Checked = boolUseTextFile
 
         End If
 
@@ -539,8 +566,12 @@ Public Class Form1
             TextBoxUpdateSeconds.Text = strSetting_UpdateSeconds
         End If
 
-        If strSetting_Message <> "" Then
-            TextBoxMessage.Text = strSetting_Message
+        If boolUseTextFile Then
+            TextBoxMessage.Text = strTextFilePath
+        Else
+            If strSetting_Message <> "" Then
+                TextBoxMessage.Text = strSetting_Message
+            End If
         End If
 
 
@@ -570,7 +601,19 @@ Public Class Form1
 
         strSetting_Color = ComboBoxColor.SelectedItem.ToString
         strSetting_LEDPort = GetComboBox(ComboBoxLEDPort).Key
-        strSetting_Message = TextBoxMessage.Text
+
+        If CheckBoxUseFile.Checked Then
+            If IO.File.Exists(TextBoxMessage.Text) Then
+                strTextFilePath = TextBoxMessage.Text
+            Else
+                strTextFilePath = "???"
+            End If
+            appRegKey.SetValue("TextFilePath", strTextFilePath)
+
+        Else
+            strSetting_Message = TextBoxMessage.Text
+            appRegKey.SetValue("Message", strSetting_Message)
+        End If
 
 
         If Not ComboBoxMode.SelectedItem Is Nothing Then
@@ -584,7 +627,6 @@ Public Class Form1
 
         appRegKey.SetValue("Color", strSetting_Color)
         appRegKey.SetValue("LEDPort", strSetting_LEDPort)
-        appRegKey.SetValue("Message", strSetting_Message)
         appRegKey.SetValue("Mode", strSetting_Mode)
         appRegKey.SetValue("Font", strSetting_Font)
         appRegKey.SetValue("Speed", strSetting_Speed)
@@ -592,7 +634,7 @@ Public Class Form1
 
         appRegKey.SetValue("SynchronizeClock", boolSynchronizeClock, RegistryValueKind.DWord)
         appRegKey.SetValue("UseMilitaryTime", boolUseMilitaryTime, RegistryValueKind.DWord)
-
+        appRegKey.SetValue("UseTextFile", boolUseTextFile, RegistryValueKind.DWord)
 
         regKey.Close()
         appRegKey.Close()
@@ -651,11 +693,11 @@ Public Class Form1
 
 
     Private Sub Form1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        If boolTrayExit = False Then
-            e.Cancel = True
-            Me.WindowState = FormWindowState.Minimized
-            Exit Sub
-        End If
+        'If boolTrayExit = False Then
+        '   e.Cancel = True
+        '   Me.WindowState = FormWindowState.Minimized
+        '   Exit Sub
+        'End If
     End Sub
 
 
@@ -671,7 +713,7 @@ Public Class Form1
 
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
-        boolTrayExit = True
+        'boolTrayExit = True
         Application.Exit()
     End Sub
 
@@ -741,5 +783,110 @@ Public Class Form1
 
     Private Sub CheckBoxMilitaryTime_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxMilitaryTime.CheckedChanged
         boolUseMilitaryTime = CheckBoxMilitaryTime.Checked
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim strPortName_LED As String = ComboBoxLEDPort.SelectedValue.ToString
+
+        If strPortName_LED = "" Then
+            MsgBox("No LED port selected!", MsgBoxStyle.Exclamation)
+            Exit Sub
+        End If
+
+        'Dim strFilePaths() As String = {"c:\temp\1.bmp", "c:\temp\2.bmp", "c:\temp\3.bmp"}
+
+        Timer1.Stop()
+
+        Dim bb As New BetaBrite.Sign(strPortName_LED)
+        With bb
+            .Open()
+
+            .UseMemoryText("A"c, 256)
+            'For i As Integer = 0 To UBound(strFilePaths)
+            For i As Integer = 1 To 15
+                Dim fileChar As Char = Chr(Asc("B") + (i - 1))
+                .UseMemoryPicture(fileChar)
+            Next
+            .AllocateMemory()
+
+            Dim strText As String = "<nohold>"
+            'For i As Integer = 0 To UBound(strFilePaths)
+            For i As Integer = 0 To 14
+                Dim fileChar As Char = Chr(Asc("B") + i)
+                Dim bmp As New Bitmap("c:\temp\kr" & i.ToString() & ".bmp")
+                '.SetPicture(fileChar, "c:\temp\" & i.ToString() & ".bmp")
+                .SetPicture(fileChar, bmp)
+                strText += "<callpic=" & fileChar & "><newline>"
+            Next
+
+            ''SAME THING.. BUT FLIP?
+            'For i As Integer = 0 To 14
+            '    Dim fileChar As Char = Chr(Asc("D") + 20 + i)
+            '    Dim bmp As New Bitmap("c:\temp\kr" & i.ToString() & ".bmp")
+            '    bmp.RotateFlip(RotateFlipType.RotateNoneFlipX)
+            '    .SetPicture(fileChar, bmp)
+            '    strText += "<callpic=" & fileChar & "><newline>"
+            'Next
+
+
+            .SetText("A"c, strText, Transition.Hold)
+            Console.WriteLine("All Text:")
+            Console.WriteLine(strText)
+
+            .Close()
+
+        End With
+    End Sub
+
+    Public Function CopyDataToBitmap(bytData() As Byte) As Bitmap
+        'Here create the Bitmap to the know height, width And format
+        Dim bmp As Bitmap = New Bitmap(1, 1, Imaging.PixelFormat.Format24bppRgb)
+
+        'Create a BitmapData And Lock all pixels to be written 
+        Dim bmpData As Imaging.BitmapData = bmp.LockBits(
+                       New Rectangle(0, 0, bmp.Width, bmp.Height),
+                       Imaging.ImageLockMode.WriteOnly, bmp.PixelFormat)
+
+        'Copy the data from the byte array into BitmapData.Scan0
+        Runtime.InteropServices.Marshal.Copy(bytData, 0, bmpData.Scan0, bytData.Length)
+
+
+        'Unlock the pixels
+        bmp.UnlockBits(bmpData)
+
+
+        'Return the bitmap 
+        Return bmp
+    End Function
+
+    Private Sub CheckBoxUseFile_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxUseFile.CheckedChanged
+        boolUseTextFile = CheckBoxUseFile.Checked
+        Label3.Visible = Not boolUseTextFile
+        ButtonBrowse.Visible = boolUseTextFile
+
+        If CheckBoxUseFile.Checked Then
+            Label1.Text = "&Text file path:"
+            TextBoxMessage.Width = TextBoxMessage.Width - 70
+            TextBoxMessage.Text = strTextFilePath
+        Else
+            Label1.Text = "&Text to Send:"
+            TextBoxMessage.Width = TextBoxMessage.Width + 70
+            TextBoxMessage.Text = strSetting_Message
+        End If
+    End Sub
+
+    Private Sub ContextMenuStripMessage_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStripMessage.Opening
+        If CheckBoxUseFile.Checked Then
+            e.Cancel = True
+        End If
+    End Sub
+
+    Private Sub ButtonBrowse_Click(sender As Object, e As EventArgs) Handles ButtonBrowse.Click
+        OpenFileDialog1.Filter = "Text Files (*.txt)|*.txt"
+        OpenFileDialog1.Title = "Select a text file for the message:"
+        If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+            strTextFilePath = OpenFileDialog1.FileName
+            TextBoxMessage.Text = strTextFilePath
+        End If
     End Sub
 End Class

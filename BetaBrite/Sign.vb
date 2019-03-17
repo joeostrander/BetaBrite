@@ -255,7 +255,11 @@ Public Class Sign
             .DataBits = 7
             .Parity = Parity.Even
             .StopBits = StopBits.One
-            .Open()
+            Try
+                .Open()
+            Catch ex As Exception
+                Return
+            End Try
         End With
     End Sub
 
